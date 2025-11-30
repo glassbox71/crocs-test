@@ -1,0 +1,51 @@
+@use "../../App.scss" as g;
+
+.main_slider_wrap {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+
+  .main_slider {
+    .main_slider {
+      height: calc(var(--vh, 1vh) * 100);
+    }
+
+    img,
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; // 꽉 차게, 약간 잘릴 수 있음
+      object-position: center center;
+    }
+  }
+
+  .swiper-pagination {
+    @include g.flex($jc: center, $gap: 3rem);
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 6rem;
+    background: rgba($color: #eee, $alpha: 0.4);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    padding: 0 24rem;
+    margin: 0 auto;
+
+    .swiper-pagination-bullet {
+      @include g.flex($gap: auto);
+      width: fit-content;
+      height: 4rem;
+      border-radius: 50px;
+      padding: 1rem 1.2rem;
+      background: #fff;
+      // font-size: 1.2rem;
+      font-weight: 600;
+      color: g.$subColor;
+    }
+
+    .swiper-pagination-bullet-active {
+      background: g.$mainColor;
+    }
+  }
+}

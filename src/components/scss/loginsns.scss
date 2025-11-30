@@ -1,0 +1,8 @@
+@use '../../App.scss' as g;
+
+.login_sns_wrap {
+    @include g.flex($jc: center);
+    button {
+        padding: 0;
+    }
+}

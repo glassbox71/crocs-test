@@ -1,0 +1,10 @@
+@use '../../App.scss' as g;
+
+.wishlist_page {
+    .title_wrap {
+        margin: 5rem 0;
+        .section_title {
+            text-align: center;
+        }
+    }
+}

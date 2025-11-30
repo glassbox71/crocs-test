@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "title": "언퍼게터블",
+        "subtitle": "언퍼게터블 컬렉션 글로그",
+        "description": "당신의 세상, 포근하게 꾸며보세요",
+        "image": "/images/category__promotion-list__item_01.png",
+        "alt": "언퍼게터블 클로그",
+        "link": "/promotion/unforgettable"
+    },
+    {
+        "id": 2,
+        "title": "르세라핌 x 크록스",
+        "subtitle": "빛나는 모든 순간",
+        "description": "르세라핌 컬렉션 쇼핑하기",
+        "image": "/images/category__promotion-list__item_03.png",
+        "alt": "르세라핌x크록스",
+        "link": "/promotion/lesserafim"
+    }
+]

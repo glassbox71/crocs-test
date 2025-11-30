@@ -1,0 +1,56 @@
+@use "../../App.scss" as g;
+
+.state_wrap {
+  background: #eee;
+  padding: 8rem 4rem;
+  border-radius: 1rem;
+  @include g.flex($jc: center, $ai: center, $gap: 8rem);
+  margin: 5rem 0;
+  .order_state_left {
+    @include g.flex($jc: center, $ai: center, $gap: 8rem);
+    li {
+      position: relative;
+      @include g.flex($fd: column, $ai: center, $gap: 1.6rem);
+      a span {
+        font-size: 4rem;
+        font-weight: 600;
+      }
+      > span:last-child {
+        color: #999;
+      }
+      &:nth-child(1)::after,
+      &:nth-child(2)::after,
+      &:nth-child(3)::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: -4rem;
+        width: 1.4rem;
+        height: 1.4rem;
+        border-top: 2px solid #ccc;
+        border-right: 2px solid #ccc;
+        transform: translateY(-50%) rotate(45deg);
+      }
+    }
+  }
+  .order_state_right {
+    li {
+      @include g.flex($jc: space-between, $ai: center);
+      strong {
+        display: flex;
+        align-items: center;
+        font-weight: 600;
+        span {
+          margin-left: 0.4rem;
+          font-weight: 400;
+        }
+      }
+      a {
+        span {
+          font-weight: 600;
+          margin-right: 1rem;
+        }
+      }
+    }
+  }
+}

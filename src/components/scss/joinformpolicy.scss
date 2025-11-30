@@ -1,0 +1,37 @@
+@use "../../App.scss" as g;
+
+.policy_wrap {
+  grid-column: 2/3;
+  grid-row: 1;
+  .policy_top {
+    margin-bottom: 2rem;
+    font-weight: 600;
+  }
+  .policy_middle {
+    .policy_checklist {
+      display: grid;
+      grid-template-columns: 1fr 6fr 2fr;
+      align-items: center;
+      white-space: nowrap;
+      padding: 0.8rem 0;
+      // button:nth-child(1) {
+      //     width: 3.2rem;
+      //     height: 3.2rem;
+      //     border-radius: 50%;
+      //     background-color: #eee;
+      // }
+      input[type="checkbox"] {
+        width: 4rem;
+        accent-color: g.$subColor;
+      }
+      div:nth-child(3) {
+        display: inline-block;
+        width: 1.6rem;
+        height: 1.6rem;
+        // background: url(../../assets/images/icon-arrow-down.svg) no-repeat center center;
+        cursor: pointer;
+        line-height: 1.6rem;
+      }
+    }
+  }
+}

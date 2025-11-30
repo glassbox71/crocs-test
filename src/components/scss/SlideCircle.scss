@@ -1,0 +1,777 @@
+@charset "utf-8";
+@use "/src/App.scss" as g;
+
+// Mixins
+@mixin transition($property: all, $duration: 0.3s) {
+  transition: $property $duration;
+  -webkit-transition: $property $duration;
+}
+
+// Reset & Base
+html {
+  -webkit-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  -ms-text-size-adjust: none;
+  -o-text-size-adjust: none;
+}
+
+body.open {
+  overflow: hidden;
+}
+
+.blind {
+  display: block;
+  overflow: hidden;
+  position: absolute !important;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  font-size: 0;
+  line-height: 0;
+  text-indent: -9999px;
+}
+
+// Container
+#wrap {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+
+  .wrap {
+    display: inline-block;
+    vertical-align: middle;
+    box-sizing: border-box;
+    position: relative;
+    width: 100% !important;
+    margin: 0 auto;
+  }
+}
+
+#container {
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(128, 193, 66, 0.7) 0%,
+    rgba(140, 242, 230, 0.7) 24%,
+    rgba(249, 255, 200, 0.7) 50%,
+    rgba(140, 242, 230, 0.7) 74%,
+    rgba(128, 193, 66, 0.7) 100%
+  );
+  position: relative;
+  padding-top: 100px;
+  @include transition(all, 0.3s);
+  height: 100%;
+
+  #contents {
+    position: relative;
+    height: 100%;
+
+    .title_wrap {
+      @include g.flex($fd: column);
+      // text-align: center;
+      position: relative;
+      padding-bottom: 5rem;
+      // left:-50px;
+      // margin-bottom: 10px;
+      // > h2 {
+      //     font-size: 60px;
+      // }
+      // > p {
+      //     color: g.$subColor;
+      // }
+    }
+
+    // Decorative lines
+    // &:before,
+    // &:after {
+    //   content: "";
+    //   position: absolute;
+    //   top: 0;
+    //   bottom: 0;
+    //   z-index: -1;
+    //   width: 1px;
+    //   background-color: g.$subColor;
+    //   opacity: 0.05;
+    //   pointer-events: none;
+    // }
+
+    &:before {
+      left: 50%;
+      margin-left: -320px;
+    }
+
+    &:after {
+      right: 50%;
+      margin-right: -320px;
+    }
+
+    .circle_main {
+      padding: 20px;
+      overflow: hidden;
+    }
+  }
+}
+
+// Slide Circle Section
+.circle_slider {
+  position: relative;
+  min-height: 600px;
+  z-index: 100;
+
+  // Decorative backgrounds
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0px;
+    width: 600px;
+    height: 150vh;
+    margin-top: -70px;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    @include transition(all, 0.3s);
+  }
+
+  &:before {
+    right: 45%;
+    // height: 150%;
+    margin-right: 450px;
+    // background: rgba(255, 255, 255, 0.3);
+    background-position: right center;
+  }
+
+  &:after {
+    left: 50%;
+    margin-left: 360px;
+    background-position: left center;
+  }
+}
+
+// Slide Circle Container
+.circle_slides {
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  width: 1440px;
+  // height: 800px;
+  margin-top: -450px;
+  margin-left: -720px;
+}
+
+// Circle Items (Slides)
+.circle_item {
+  width: 600px;
+  // height: 800px;
+  @include transition(all, 0.5s);
+  opacity: 0;
+
+  // Navigation Buttons
+  .slide_btns {
+    // display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 9999;
+    pointer-events: none; /* 버튼 외 다른 영역 클릭이 막히지 않도록 */
+
+    button {
+      pointer-events: auto;
+      position: absolute;
+      font-size: 15px;
+      font-weight: 600;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      transform: translateY(-50%);
+
+      p {
+        margin: 0;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        pointer-events: none;
+      }
+
+      &:before,
+      &:after {
+        content: "";
+        position: absolute;
+        top: -12px;
+        width: 40px;
+        height: 1px;
+        background-color: rgb(51, 51, 51);
+        transition: transform 0.35s cubic-bezier(0.2, 0.9, 0.2, 1),
+          width 0.25s ease, opacity 0.25s ease;
+        opacity: 1;
+        pointer-events: none;
+      }
+
+      /* Prev 버튼 (왼쪽) */
+      &.prev_btn {
+        left: -170px;
+        transform: rotate(-90deg);
+        transform-origin: center;
+
+        /* 가운데에서 before / after 배치 왼/오 */
+        &::before {
+          left: 50%;
+          transform-origin: left center;
+        }
+        &::after {
+          right: 50%;
+          transform-origin: right center;
+        }
+
+        /* hover 45도 회전 */
+        &:hover {
+          p {
+            transform: translateY(-6px);
+            opacity: 0;
+          }
+
+          &::before {
+            transform: rotate(45deg);
+          }
+          &::after {
+            transform: rotate(-45deg);
+          }
+        }
+      }
+
+      /* Next 버튼 (오른쪽) */
+      &.next_btn {
+        right: -50px;
+        transform: rotate(90deg);
+        transform-origin: center;
+
+        &::before {
+          left: 50%;
+          transform-origin: left center;
+        }
+        &::after {
+          right: 50%;
+          transform-origin: right center;
+        }
+
+        /* hover 45회전 */
+        &:hover {
+          p {
+            transform: translateY(-6px);
+            opacity: 0;
+            z-index: 9999;
+          }
+
+          &::before {
+            transform: rotate(45deg);
+            z-index: 9999;
+          }
+          &::after {
+            transform: rotate(-45deg);
+            z-index: 9999;
+          }
+        }
+      }
+    }
+  }
+
+  &.active {
+    opacity: 1;
+
+    &.center {
+      transform: translateX(-50%) scale(1.1);
+      position: relative;
+
+      .item {
+        width: 500px;
+        margin-left: -60px;
+      }
+
+      .goods_wrap {
+        bottom: 100px;
+      }
+
+      .goods_txt {
+        opacity: 1;
+        transform: scale(1);
+        z-index: 10;
+      }
+    }
+  }
+}
+
+.item {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  width: 240px;
+  height: 800px;
+  @include transition(all, 0.6s);
+}
+
+// goods_wrap
+.goods_wrap {
+  display: inline-block;
+  vertical-align: middle;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 50px;
+  z-index: 1;
+  width: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 300px;
+  @include transition(all, 0.3s);
+}
+
+// Image
+.goods_pic {
+  display: inline-block;
+  vertical-align: middle;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  overflow: hidden;
+  width: 120%;
+  height: auto;
+  min-height: 240px;
+  aspect-ratio: 1/1.18;
+  border-radius: 0 0 300px 300px;
+  @include transition(all, 0.3s);
+
+  &.crocs {
+    min-width: 240px;
+    aspect-ratio: 1/1;
+    border-radius: 400px;
+    background: rgba(217, 217, 217, 0.4);
+  }
+
+  img {
+    display: inline-block;
+    vertical-align: middle;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    padding: 100px;
+    @include transition(all, 0.3s);
+  }
+
+  a {
+    display: block;
+  }
+}
+
+// Text Content
+.goods_txt {
+  display: inline-block;
+  vertical-align: middle;
+  position: absolute;
+  left: -440px;
+  top: -100px;
+  width: 300px;
+  text-align: left;
+  word-wrap: normal;
+  word-break: keep-all;
+  @include transition(all, 0.9s);
+  opacity: 0;
+  transform: scale(0.5);
+  z-index: 10;
+
+  > span {
+    display: inline-block;
+    vertical-align: middle;
+    // float: left;
+    // width: 100%;
+    margin-bottom: 10px;
+    font-size: 14px;
+    // font-weight: 500;
+    color: #66de1b;
+    line-height: 20px;
+    text-align: center;
+    background: g.$subColor;
+    padding: 5px 20px;
+    border-radius: 50px;
+  }
+
+  .btn {
+    margin-top: 15px;
+    display: inline-block;
+  }
+
+  .btn-read {
+    display: inline-block;
+  }
+  a.btn.middle.arrow {
+    display: block;
+    width: fit-content;
+    margin-top: 20px;
+    clear: both;
+    background: var(--selectedColor) !important;
+    border: var(--selectedColor) !important;
+  }
+
+  > strong {
+    display: inline-block;
+    vertical-align: middle;
+    // float: left;
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 30px;
+    // color: currentColor;
+    color: g.$subColor;
+    line-height: 40px;
+    letter-spacing: -1.5px;
+    font-weight: 500;
+  }
+
+  .s_color {
+    display: inline-block;
+    vertical-align: middle;
+    // float: left;
+    width: 100%;
+    margin-bottom: 200px;
+    font-size: 15px;
+    // font-weight: 600;
+    color: g.$subColor;
+    line-height: 30px;
+    letter-spacing: -0.5px;
+
+    b {
+      color: #64646b;
+    }
+
+    .swatches {
+      display: flex;
+      // overflow: hidden;
+      position: relative;
+
+      .swatches_list {
+        display: flex;
+        gap: 0.6rem;
+        margin-top: 10px;
+
+        .swatch_color {
+          display: inline-block;
+          border-radius: 50%;
+          width: 18px;
+          height: 18px;
+          vertical-align: middle;
+          border: 1px solid currentColor;
+          cursor: pointer;
+
+          &.active {
+            transform: scale(1.2);
+          }
+        }
+      }
+    }
+  }
+
+  > a.btn {
+    border-color: currentColor !important;
+    background-color: currentColor !important;
+    color: currentColor !important;
+
+    span {
+      color: #fff;
+    }
+
+    &:before {
+      border-color: #fff;
+    }
+  }
+}
+
+// Dots Navigation
+.circle_dots {
+  position: fixed;
+  top: 50%;
+  right: 30px; // 오른쪽 끝 기준
+  transform: translateY(-50%);
+  padding: 30px 15px; // dot 수가 늘어나면 자동으로 커짐
+  width: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; // <<< 버튼(span 등) 수평 중앙
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 30px; // ← 위, 아래 둥글게 (정사각/직사각 자동)
+  z-index: 50;
+  // height: calc(var(--vh, 1vh) * 100);
+  //   &.off {
+  //     opacity: 0;
+  //   }
+
+  .circle_dot {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center; // ← span을 수평 가운데
+    align-items: center; // ← span을 수직 가운데
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+
+    > span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #dcdce6;
+      transition: all 0.3s;
+      z-index: 1;
+    }
+
+    &.active > span {
+      background-color: g.$mainColor;
+      opacity: 1;
+    }
+  }
+}
+
+// Progress Circle
+.circular {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 0;
+  width: 30px;
+  height: 30px;
+  margin-left: -15px;
+  margin-top: -15px;
+  pointer-events: none;
+
+  .inner {
+    position: absolute;
+    z-index: 5;
+    top: 50%;
+    left: 50%;
+    width: 28px;
+    height: 28px;
+    margin: -14px 0 0 -14px;
+    background: transparent;
+    border-radius: 100%;
+  }
+
+  .bar {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    border-radius: 50%;
+    clip: rect(0px, 30px, 30px, 15px);
+  }
+}
+
+.circle {
+  .bar .progress {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    clip: rect(0px, 15px, 30px, 0px);
+    background: g.$mainColor;
+    opacity: 0.7;
+  }
+
+  .left .progress {
+    z-index: 1;
+  }
+
+  .right {
+    transform: rotate(180deg);
+    z-index: 3;
+  }
+}
+
+.active .circle {
+  .left .progress {
+    animation: left 2.5s linear both;
+  }
+
+  .right .progress {
+    animation: right 2.5s linear both;
+    animation-delay: 2.5s;
+  }
+}
+
+.stop .active .circle .progress {
+  animation: none !important;
+}
+
+// Play/Pause Button
+.goods_btn {
+  display: inline-block;
+  vertical-align: middle;
+  position: fixed;
+  right: 50px;
+  top: 50%;
+  width: 50px;
+  height: 50px;
+  margin-top: 30px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  z-index: 999;
+
+  .bnt_bg {
+    width: 30px;
+    height: 30px;
+    transform: translateX(-5px);
+    display: flex;
+    border-radius: 50%;
+    justify-content: center; // ← span을 수평 가운데
+    align-items: center; // ← span을 수직 가운데
+    background: #fff;
+    border: none;
+  }
+
+  &.start {
+    @include transition(all, 0.3s);
+  }
+
+  &.off {
+    opacity: 0;
+  }
+
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 4px;
+    height: 10px;
+    margin-top: -5px;
+    border-radius: 2px;
+    background-color: #dbdbe5;
+  }
+
+  &:before {
+    right: 50%;
+    margin-right: 1px;
+    z-index: 10;
+  }
+
+  &:after {
+    left: 50%;
+    margin-left: 1px;
+    z-index: 10;
+  }
+
+  &.stop {
+    &:before,
+    &:after {
+      background-color: #a2e88f;
+    }
+  }
+
+  svg {
+    display: none;
+  }
+}
+
+// Buttons
+.btn {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  min-width: 120px;
+  height: 40px;
+  margin: 0 !important;
+  padding: 0 25px !important;
+  border: rgba(98, 85, 246, 0.2) solid 1px !important;
+  border-radius: 40px;
+  background: none !important;
+  background-color: #fff !important;
+  color: g.$mainColor !important;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 38px;
+  letter-spacing: -0.5px;
+  text-align: center;
+  cursor: pointer;
+  @include transition(all, 0.3s);
+
+  &:hover {
+    border-color: rgba(98, 85, 246, 0.5) !important;
+  }
+
+  &.middle {
+    font-size: 14px;
+    line-height: 40px;
+  }
+
+  &.arrow {
+    text-align: left;
+    padding-right: 45px !important;
+
+    &:before {
+      content: "";
+      position: absolute;
+      right: 22px;
+      top: 50%;
+      width: 4px;
+      height: 4px;
+      margin-top: -3px;
+      border-top: currentColor solid 2px;
+      border-right: currentColor solid 2px;
+      transform: rotate(45deg);
+      @include transition(all, 0.3s);
+    }
+
+    &:hover:before {
+      right: 19px;
+    }
+  }
+
+  span {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
+
+// Animations
+@keyframes left {
+  100% {
+    transform: rotate(180deg);
+  }
+}
+
+@keyframes right {
+  100% {
+    transform: rotate(180deg);
+  }
+}
+
+// IE Support
+_:-ms-fullscreen,
+:root .goods_wrap {
+  height: 240px;
+}
+
+_:-ms-fullscreen,
+:root .goods_pic {
+  height: 280px;
+}
+
+_:-ms-fullscreen,
+:root .circle_item.active.center .goods_wrap {
+  height: 600px;
+}
+
+_:-ms-fullscreen,
+:root .circle_item.active.center .goods_pic {
+  height: 700px;
+}

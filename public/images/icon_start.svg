@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" viewBox="0 0 10 22" focusable="false" aria-hidden="true" aria-label="star" width="10"  height="22" >
+	<defs>
+		<style>
+			.bg {
+				fill: #ccc;
+			}
+			.fg {
+				fill: #000;
+			}
+		</style>
+		<symbol id="star" viewBox="0 0 10 10">
+			<path d="m4.32 8.22 1.45-2.55 2.88-.59-2-2.16L7 0 4.32 1.22 1.65 0 2 2.92 0 5.08l2.88.59Z"/>
+		</symbol>
+	</defs>
+	<use class="bg" xlink:href="#star" width="10" height="10" transform="matrix(1.21, 0, 0, -1.22, 0, 10)"/>
+	<use class="fg" xlink:href="#star" width="10" height="10" transform="matrix(1.21, 0, 0, -1.22, 0, 21.59)"/>
+</svg>

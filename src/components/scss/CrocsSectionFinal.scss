@@ -1,0 +1,504 @@
+@use '../../App.scss' as g;
+
+// SVG 필터 적용
+.svg-filters {
+    position: absolute;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+}
+
+.crocs-section {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background: #f5e6d3;
+    overflow: hidden;
+}
+
+.crocs-hero {
+    @include g.flex($jc: center, $ai: center);
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(135deg, #f5e6d3 0%, #ede0cc 100%);
+}
+
+// 텍스트 컨테이너 공통 스타일
+.text-container {
+    position: absolute;
+    inset: 0;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
+    // align-items: center;
+    @include g.flex($jc: center, $ai: center, $fd: column);
+    pointer-events: none;
+
+    .text-row {
+        width: 100%;
+        // display: flex;
+        // justify-content: center;
+        // align-items: center;
+        @include g.flex($jc: center, $ai: center);
+
+        // 5줄 배치 (첫 줄과 마지막 줄은 반만 보이도록)
+        &.text-row-1 {
+            transform: translateY(-300px); // 위로 나가서 반만 보임
+        }
+
+        &.text-row-2 {
+            transform: translateY(-150px);
+        }
+
+        &.text-row-3 {
+            transform: translateY(0);
+        }
+
+        &.text-row-4 {
+            transform: translateY(150px);
+        }
+
+        &.text-row-5 {
+            transform: translateY(300px); // 아래로 나가서 반만 보임
+        }
+    }
+
+    .text-wrapper {
+        // display: flex;
+        // justify-content: center;
+        @include g.flex($jc: center, $ai: center);
+        width: 100%;
+    }
+
+    .text-item {
+        font-size: 150px;
+        font-weight: 900;
+        // text-transform: uppercase;
+        letter-spacing: -0.02em;
+        line-height: 0.5;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        transform: scaleY(1.4);
+        white-space: nowrap; // 한 줄로 유지
+        width: 100%; // 전체 너비 사용
+        text-align: center;
+    }
+}
+
+// 기본 텍스트 (회색)
+.text-base {
+    z-index: 1;
+
+    .text-item {
+        color: #c9b8a5;
+        opacity: 0.6;
+    }
+}
+
+// Blob 레이어
+.blob-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    filter: url(#gooey-strong);
+    isolation: isolate;
+}
+
+// Blob 스타일
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    will-change: transform;
+    background: g.$mainColor;
+    // background: #00ff64;
+    mix-blend-mode: lighten;
+    pointer-events: none;
+    filter: url(#gooey);
+
+    &.blob-left-1 {
+        width: 700px;
+        height: 700px;
+        bottom: -200px;
+        left: -100px;
+        animation: blobMove1 25s ease-in-out infinite alternate, blobRotate 40s linear infinite,
+            blobScale1 15s ease-in-out infinite alternate;
+    }
+
+    &.blob-left-2 {
+        width: 550px;
+        height: 550px;
+        bottom: -100px;
+        left: 250px;
+        animation: blobMove2 20s ease-in-out infinite alternate,
+            blobRotate2 35s linear infinite reverse, blobScale2 12s ease-in-out infinite alternate;
+        animation-delay: -5s;
+    }
+
+    &.blob-right-1 {
+        width: 650px;
+        height: 650px;
+        top: -150px;
+        right: -50px;
+        animation: blobMove3 22s ease-in-out infinite alternate, blobRotate 45s linear infinite,
+            blobScale3 18s ease-in-out infinite alternate;
+        animation-delay: -10s;
+    }
+
+    &.blob-right-2 {
+        width: 500px;
+        height: 500px;
+        top: -50px;
+        right: 300px;
+        animation: blobMove4 18s ease-in-out infinite alternate,
+            blobRotate2 30s linear infinite reverse, blobScale4 14s ease-in-out infinite alternate;
+        animation-delay: -3s;
+    }
+}
+
+// 마스크된 텍스트
+.text-masked {
+    z-index: 3;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    isolation: isolate;
+    filter: none !important;
+
+    // blob 크기와 동일: 700px, 550px, 650px, 500px (반지름이므로 그대로 사용)
+    -webkit-mask-image: radial-gradient(
+            circle 700px at var(--blob1-x, -100px) var(--blob1-y, calc(100% + 200px)),
+            black 48%,
+            transparent 52%
+        ),
+        radial-gradient(
+            circle 550px at var(--blob2-x, 250px) var(--blob2-y, calc(100% + 100px)),
+            black 48%,
+            transparent 52%
+        ),
+        radial-gradient(
+            circle 650px at var(--blob3-x, calc(100% + 50px)) var(--blob3-y, -150px),
+            black 48%,
+            transparent 52%
+        ),
+        radial-gradient(
+            circle 500px at var(--blob4-x, calc(100% - 300px)) var(--blob4-y, -50px),
+            black 48%,
+            transparent 52%
+        );
+    -webkit-mask-composite: source-over;
+
+    mask-image: radial-gradient(
+            circle 700px at var(--blob1-x, -100px) var(--blob1-y, calc(100% + 200px)),
+            black 48%,
+            transparent 52%
+        ),
+        radial-gradient(
+            circle 550px at var(--blob2-x, 250px) var(--blob2-y, calc(100% + 100px)),
+            black 48%,
+            transparent 52%
+        ),
+        radial-gradient(
+            circle 650px at var(--blob3-x, calc(100% + 50px)) var(--blob3-y, -150px),
+            black 48%,
+            transparent 52%
+        ),
+        radial-gradient(
+            circle 500px at var(--blob4-x, calc(100% - 300px)) var(--blob4-y, -50px),
+            black 48%,
+            transparent 52%
+        );
+    mask-composite: add;
+
+    .text-item {
+        color: #fff !important;
+        opacity: 1 !important;
+        text-shadow: none !important;
+        font-weight: 900 !important;
+        -webkit-text-fill-color: #fff !important;
+        -webkit-font-smoothing: antialiased !important;
+        -moz-osx-font-smoothing: grayscale !important;
+        filter: none !important;
+    }
+}
+// 애니메이션
+@keyframes blobMove1 {
+    0% {
+        transform: translate(0, 0);
+    }
+    20% {
+        transform: translate(100px, -80px);
+    }
+    40% {
+        transform: translate(200px, -40px);
+    }
+    60% {
+        transform: translate(180px, -100px);
+    }
+    80% {
+        transform: translate(80px, -60px);
+    }
+    100% {
+        transform: translate(120px, -90px);
+    }
+}
+
+@keyframes blobMove2 {
+    0% {
+        transform: translate(0, 0);
+    }
+    25% {
+        transform: translate(50px, -100px);
+    }
+    50% {
+        transform: translate(120px, -80px);
+    }
+    75% {
+        transform: translate(100px, -120px);
+    }
+    100% {
+        transform: translate(30px, -90px);
+    }
+}
+
+@keyframes blobMove3 {
+    0% {
+        transform: translate(0, 0);
+    }
+    20% {
+        transform: translate(-120px, 80px);
+    }
+    40% {
+        transform: translate(-180px, 60px);
+    }
+    60% {
+        transform: translate(-150px, 100px);
+    }
+    80% {
+        transform: translate(-80px, 70px);
+    }
+    100% {
+        transform: translate(-100px, 90px);
+    }
+}
+
+@keyframes blobMove4 {
+    0% {
+        transform: translate(0, 0);
+    }
+    25% {
+        transform: translate(-70px, 60px);
+    }
+    50% {
+        transform: translate(-120px, 80px);
+    }
+    75% {
+        transform: translate(-90px, 100px);
+    }
+    100% {
+        transform: translate(-40px, 70px);
+    }
+}
+
+@keyframes blobRotate {
+    0% {
+        rotate: 0deg;
+    }
+    100% {
+        rotate: 360deg;
+    }
+}
+
+@keyframes blobRotate2 {
+    0% {
+        rotate: 0deg;
+    }
+    100% {
+        rotate: -360deg;
+    }
+}
+
+@keyframes blobScale1 {
+    0%,
+    100% {
+        scale: 1;
+    }
+    25% {
+        scale: 1.15;
+    }
+    50% {
+        scale: 0.95;
+    }
+    75% {
+        scale: 1.1;
+    }
+}
+
+@keyframes blobScale2 {
+    0%,
+    100% {
+        scale: 1;
+    }
+    33% {
+        scale: 1.2;
+    }
+    66% {
+        scale: 0.9;
+    }
+}
+
+@keyframes blobScale3 {
+    0%,
+    100% {
+        scale: 1;
+    }
+    25% {
+        scale: 0.9;
+    }
+    50% {
+        scale: 1.18;
+    }
+    75% {
+        scale: 0.95;
+    }
+}
+
+@keyframes blobScale4 {
+    0%,
+    100% {
+        scale: 1;
+    }
+    20% {
+        scale: 1.12;
+    }
+    40% {
+        scale: 0.88;
+    }
+    60% {
+        scale: 1.08;
+    }
+    80% {
+        scale: 0.92;
+    }
+}
+
+.blob {
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: inherit;
+        border-radius: inherit;
+        animation: morphShape 8s ease-in-out infinite alternate;
+    }
+}
+
+@keyframes morphShape {
+    0%,
+    100% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+    25% {
+        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    }
+    50% {
+        border-radius: 50% 60% 60% 40% / 60% 40% 50% 50%;
+    }
+    75% {
+        border-radius: 40% 50% 50% 60% / 40% 60% 50% 60%;
+    }
+}
+
+@keyframes pulse {
+    0%,
+    100% {
+        opacity: 0.9;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 940px) {
+    .text-container {
+        .text-item {
+            font-size: 100px;
+            line-height: 1;
+        }
+
+        .text-row {
+            &.text-row-1 {
+                transform: translateY(-120px);
+            }
+
+            &.text-row-2 {
+                transform: translateY(-60px);
+            }
+
+            &.text-row-3 {
+                transform: translateY(0);
+            }
+
+            &.text-row-4 {
+                transform: translateY(60px);
+            }
+
+            &.text-row-5 {
+                transform: translateY(120px);
+            }
+        }
+    }
+
+    .blob {
+        &.blob-left-1 {
+            width: 400px;
+            height: 400px;
+            // bottom: -150px;
+            // left: -300px;
+        }
+
+        &.blob-left-2 {
+            width: 320px;
+            height: 320px;
+            // bottom: -80px;
+            // left: 300px;
+        }
+
+        &.blob-right-1 {
+            width: 380px;
+            height: 380px;
+            // top: -120px;
+            // right: -80px;
+        }
+
+        &.blob-right-2 {
+            width: 300px;
+            height: 300px;
+            // top: -60px;
+            // right: 180px;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .text-container {
+        .text-item {
+            font-size: 60px;
+            line-height: 1;
+        }
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .blob {
+        animation: none !important;
+
+        &::before {
+            animation: none !important;
+        }
+    }
+}

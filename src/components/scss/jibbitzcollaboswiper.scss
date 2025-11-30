@@ -1,0 +1,192 @@
+@use "/src/App.scss" as g;
+
+.jibbitz_wrap {
+  padding-top: 12rem;
+
+  .inner {
+    position: relative;
+
+    > .title_wrap {
+      @include g.flex($fd: column, $ai: flex-end);
+      text-align: right;
+      position: absolute;
+      right: -2rem;
+    }
+
+    .collabo-wrap {
+      @include g.flex($jc: flex-end);
+
+      .MySwiper {
+        width: 100rem;
+        margin-left: 0;
+        @include g.flex();
+        .swiper-wrapper {
+          max-width: 50rem;
+          .swiper-slide {
+            scale: 0.8;
+            transition: 0.8s;
+            &:hover {
+              scale: 0.85;
+            }
+          }
+          .swiper-slide-active {
+            max-width: 30rem;
+            // background-color: pink;
+            scale: 1;
+            transition: 0.8s;
+            &:hover {
+              scale: 1.05;
+            }
+          }
+        }
+      }
+      .swiper {
+        position: relative;
+      }
+      .swiper-horizontal {
+        padding: 10rem;
+        overflow: hidden;
+      }
+      .swiper-btn-wrap {
+        display: flex;
+        justify-content: flex-end;
+        gap: 50px;
+        transform: translate(-50%, 100%);
+        .swiper-button-prev,
+        .swiper-button-next {
+          position: relative !important;
+          inset: unset !important;
+          transform: none !important;
+          margin: 0 !important;
+          border: 1px solid #eee;
+          border-radius: 50%;
+          width: 6rem;
+          height: 6rem;
+          cursor: pointer;
+          transition: 0.5s;
+          @include g.flex();
+          &:hover {
+            background: g.$subColor;
+          }
+          .swiper-navigation-icon {
+            display: none;
+          }
+          &::after {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: g.$mainColor;
+            font-weight: 600;
+            font-size: 4rem;
+            width: 2rem;
+            height: 2rem;
+          }
+        }
+        .swiper-button-prev::after {
+          content: "";
+          background: url(../../assets/images/icon-prev-color.svg) no-repeat
+            center center;
+        }
+        .swiper-button-next::after {
+          content: "";
+          background: url(../../assets/images/icon-next-color.svg) no-repeat
+            center center;
+        }
+      }
+    }
+  }
+}
+
+.product_card {
+  border: 2px solid #eee;
+  border-radius: 20rem;
+  max-width: 30rem;
+  height: 60rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+
+  --x: 50%;
+  --y: 50%;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.5;
+    background: radial-gradient(
+      circle at var(--x) var(--y),
+      rgba(102, 222, 27, 0.3) 0%,
+      transparent 50%
+    );
+  }
+  .img-box {
+    position: relative;
+    background-color: #eee;
+    // background-color: #cfffcd;
+    // background-color: #d6e8ca;
+    // background-color: #dbffc5;
+    // background-image: radial-gradient(circle, white 3px, transparent 3px),
+    //     radial-gradient(circle, white 3px, transparent 3px);
+    // background-size: 20px 20px;
+    // background-position: 3px 3px, 13px 13px;
+    font-weight: 800;
+    width: 120%;
+    transform: translateY(-10%);
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      width: 25rem;
+    }
+  }
+  .text-box {
+    @include g.flex($gap: 6rem);
+    flex-direction: column;
+    .text-title {
+      font-weight: 600;
+      p:nth-child(2) {
+        margin-top: 1rem;
+        font-weight: 500;
+      }
+    }
+    .text-price {
+      margin: 2rem 0;
+    }
+  }
+  .text-badge {
+    span:nth-child(1) {
+      background-color: g.$mainColor;
+      border-radius: 1rem;
+      padding: 0 0.8rem;
+      color: #fff;
+      margin-right: 1rem;
+    }
+    span:nth-child(2) {
+      background-color: g.$subColor;
+      border-radius: 1rem;
+      padding: 0 0.8rem;
+      color: #fff;
+    }
+  }
+}
+
+@keyframes cardFloat {
+  0% {
+    transform: translateX(var(--x)) translateY(var(--y));
+  }
+  50% {
+    transform: translateX(calc(var(--x) + 10px))
+      translateY(calc(var(--y) - 10px));
+  }
+  100% {
+    transform: translateX(var(--x)) translateY(var(--y));
+  }
+}

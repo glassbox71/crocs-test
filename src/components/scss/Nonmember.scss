@@ -1,0 +1,40 @@
+@use '../../App.scss' as g;
+
+.nonmember_wrap {
+    max-width: 800px;
+    margin: 0 auto;
+    // box-shadow: ;
+    text-align: center;
+    border: 1px solid #ddd;
+    padding: 5rem 10rem;
+    @include g.flex($fd: column, $jc: center, $gap: none);
+
+    .nonmember_form {
+        padding: 2rem;
+        @include g.flex($fd: column);
+        width: 400px;
+        margin: 0 auto;
+
+        > input {
+            width: 40rem;
+            height: 4rem;
+            border: none;
+            background: #eee;
+            border-radius: 50px;
+            padding-left: 2rem;
+            text-align: start;
+            font-weight: 600;
+        }
+
+        > button {
+            width: 40rem;
+            height: 4rem;
+            border-radius: 50px;
+            border: none;
+            font-weight: bold;
+            font-size: 1.6rem;
+            background: g.$subColor;
+            color: #fff;
+        }
+    }
+}

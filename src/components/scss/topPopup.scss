@@ -1,0 +1,21 @@
+@use '../../App.scss' as g;
+
+.top_popup_wrap {
+    @include g.flex($jc: center);
+    background: g.$subColor;
+
+    button {
+        width: 20px;
+        height: 20px;
+    }
+
+    a {
+        display: block;
+        @include g.flex($jc: center);
+        // width: 100%;
+        height: 40px;
+        font-size: 1.2rem;
+        text-align: center;
+        color: #fff;
+    }
+}

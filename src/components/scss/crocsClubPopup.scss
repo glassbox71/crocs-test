@@ -1,0 +1,142 @@
+@use "../../App.scss" as g;
+
+.crocs_club_popup_wrap {
+  max-width: 1000px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 5rem 10rem 20rem;
+  border-radius: 1rem;
+  // border: 1px solid #ddd;
+  @include g.flex($fd: column, $jc: center, $gap: none);
+  box-shadow: 0 30px 60px rgba(20, 20, 21, 0.06);
+
+  .title_wrap {
+    .section_title {
+      text-align: center;
+      padding-bottom: 2rem;
+    }
+  }
+  .popup_wrap {
+    width: 100%;
+    // margin: 0 auto;
+    @include g.flex($gap: 10rem);
+    padding: 5rem 0;
+
+    > div {
+      flex: 1;
+    }
+
+    .crocs_club_popup_left {
+      text-align: start;
+      @include g.flex($fd: column, $gap: 5rem);
+      p {
+        span {
+          display: inline-block;
+          width: 2rem;
+          height: 2rem;
+          background: #eee;
+          border-radius: 50rem;
+          text-align: center;
+        }
+      }
+    }
+
+    .crocs_club_popup_right {
+      @include g.flex($fd: column, $jc: center, $gap: none);
+
+      .crocs_club_option {
+        .join_option_wrap {
+          .birthday_select_wrap {
+            @include g.flex($jc: center, $gap: 2rem);
+
+            select {
+              width: fit-content;
+              padding: 1rem 2.4rem;
+              margin-top: 1rem;
+              border: 1px solid #ddd;
+              border-radius: 8px;
+              background: #fff;
+              font-size: 14px;
+              cursor: pointer;
+              outline: none !important;
+              box-shadow: none !important;
+              // text-align: center;
+
+              /* 기본 select 화살표 제거 */
+              appearance: none;
+              -webkit-appearance: none;
+              -moz-appearance: none;
+
+              /* 커스텀 화살표 추가 */
+              background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+              background-repeat: no-repeat;
+              background-position: right 12px center;
+              background-size: 14px;
+
+              &:focus {
+                border-color: g.$mainColor;
+              }
+            }
+          }
+
+          .email_select_wrap {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            input[type="email"] {
+              margin-top: 15px;
+              width: 100%;
+              padding: 12px 14px;
+              border: 1px solid #ddd;
+              border-radius: 50px;
+              font-size: 14px;
+
+              &:focus {
+                border-color: g.$mainColor;
+              }
+            }
+          }
+
+          label {
+            display: flex;
+            align-items: start;
+            gap: 8px;
+            font-size: 14px;
+            margin-top: 12px;
+            cursor: pointer;
+
+            input {
+              margin-top: 3px;
+              cursor: pointer;
+            }
+          }
+
+          .text_box {
+            margin-top: 20px;
+            font-size: 13px;
+            line-height: 1.4;
+            color: #555;
+
+            strong {
+              display: block;
+              margin-top: 10px;
+              font-weight: 600;
+            }
+          }
+        }
+      }
+    }
+  }
+  p {
+    button {
+      @include g.flex($jc: center, $gap: 2rem);
+      width: 40rem;
+      height: 4rem;
+      border-radius: 50px;
+      border: none;
+      font-weight: bold;
+      font-size: 1.6rem;
+      background: linear-gradient(135deg, g.$mainColor 0%, #b0d96e 100%);
+    }
+  }
+}

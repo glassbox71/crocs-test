@@ -1,0 +1,53 @@
+@use "../../App.scss" as g;
+
+.order_list_card {
+  border: 1px solid #eee;
+  border-radius: 1rem;
+  padding: 2rem;
+  display: grid;
+  margin: 2rem 0;
+
+  .order_list_top {
+    @include g.flex();
+    .order_list_top_left {
+      @include g.flex($gap: 1rem);
+      :nth-child(1) {
+        font-weight: 600;
+      }
+    }
+    .order_list_top_right {
+      button {
+        background: g.$subColor;
+        border-radius: 5rem;
+        color: g.$mainColor;
+        &:hover {
+          background: g.$mainColor;
+          color: g.$subColor;
+        }
+      }
+    }
+  }
+  .order_list_middle {
+    @include g.flex($jc: flex-start, $gap: 4rem);
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    padding: 2rem 0;
+    margin: 2rem 0;
+    .order_list_imgbox {
+      max-width: 10rem;
+      max-height: 10rem;
+      border-radius: 1rem;
+      border: 1px solid #eee;
+      text-align: center;
+      line-height: 10rem;
+      img {
+        width: 70%;
+      }
+    }
+  }
+  .order_list_bottom {
+    .order_list_pricebox {
+      @include g.flex();
+    }
+  }
+}

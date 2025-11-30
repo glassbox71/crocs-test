@@ -1,0 +1,50 @@
+@use '../../App.scss' as g;
+
+.product_list_page {
+    .title_wrap {
+        margin: 0 auto;
+        width: fit-content;
+    }
+    .search_info_wrap {
+        @include g.flex($jc: center, $gap: 10px);
+        width: fit-content;
+        background: lightgreen;
+        padding-left: 1rem;
+        margin-bottom: 4rem;
+        border-radius: 5px;
+        .search_info {
+            @include g.flex($jc: center, $gap: 10px);
+            font-weight: 600;
+        }
+    }
+    .sub_menu_wrap {
+        @include g.flex($jc: center);
+        margin: 5rem 0;
+        .sub_menu_btn {
+            border: 1px solid #ccc;
+            font-weight: 600;
+            font-size: 1.8rem;
+
+            &:hover {
+                background: g.$mainColor;
+            }
+        }
+    }
+    .product_list_wrap {
+        width: 100%;
+        @include g.flex($jc: center, $ai: flex-start);
+        margin: 0 auto;
+
+        .list_right {
+            // width: 100%;
+            .product-card__item_list {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 4rem 4rem;
+            }
+        }
+    }
+    .page_pager {
+        @include g.flex($jc: center);
+    }
+}

@@ -1,0 +1,149 @@
+// App.scss 연결
+@use "../../App.scss" as g;
+
+// 인스타그램 섹션
+.instagram {
+  background: g.$mainColorTransparent;
+  padding: 0; // App.scss의 section padding 초기화
+  // height: auto; // App.scss의 section height: 100vh 초기화
+  padding-top: 10rem;
+  padding-bottom: 20rem;
+
+  &__content {
+    max-width: 1440px;
+    margin: 0 auto;
+
+    // 제목 영역
+    .title_wrap {
+      @include g.flex(null, center, column, null, 2rem);
+      // margin-top: 12rem;
+      color: g.$subColor;
+
+      .section_title {
+        font-size: 5rem;
+        font-weight: 900;
+        padding-top: 10rem 0 0;
+      }
+
+      .section_sub_title {
+        font-size: 1.6rem;
+        font-weight: 400;
+      }
+    }
+  }
+
+  // 비디오 리스트
+  &__video-list {
+    @include g.flex(center, null, null, null, 4rem);
+    width: 100%;
+    margin-top: 5rem;
+  }
+
+  &__video-prev {
+    transform: rotate(-90deg);
+
+    .prev_text {
+      font-size: 2rem;
+      font-weight: 600;
+    }
+  }
+
+  &__video-item {
+    width: 38.8rem;
+    height: 52rem;
+    border-radius: 1rem;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+
+    &:hover {
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      transform: translateY(-2px);
+    }
+  }
+
+  &__video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1rem;
+  }
+
+  &__play-icon {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 10;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__button-wrap {
+    @include g.flex(center, center, null, null, null);
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    padding: 0.2rem 0.6rem;
+    border-radius: 999rem;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #fff;
+    position: absolute;
+    left: 2rem;
+    bottom: 2rem;
+    z-index: 10;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      transform: translateY(-1px);
+    }
+  }
+}
+
+// 반응형
+@media (max-width: 1200px) {
+  .instagram {
+    &__content {
+      max-width: 90%;
+      padding: 0 2rem;
+    }
+
+    &__video-list {
+      gap: 2rem;
+    }
+
+    &__video-item {
+      width: 30rem;
+      height: 40rem;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .instagram {
+    padding-top: 5rem;
+    padding-bottom: 10rem;
+
+    &__video-list {
+      flex-direction: column;
+      align-items: center;
+      gap: 3rem;
+    }
+
+    &__video-item {
+      width: 35rem;
+      height: 45rem;
+    }
+
+    .section_title {
+      font-size: 3rem;
+    }
+  }
+}

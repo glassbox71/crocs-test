@@ -1,0 +1,332 @@
+@use "../../App.scss" as g;
+
+// 크록스 매장 찾기 스타일
+.store_locator {
+  // max-width: 1200px;
+  // height: 100vh;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+
+  .store_locator_header {
+    text-align: center;
+    margin-bottom: 4rem;
+
+    .store_locator_title {
+      font-size: 3.6rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin: 0 0 1rem 0;
+
+      .crocs_logo {
+        color: g.$mainColor;
+        font-size: 4.4rem;
+      }
+    }
+
+    .store_locator_subtitle {
+      font-size: 1.6rem;
+      color: #666;
+      margin: 0;
+    }
+  }
+
+  .search_section {
+    background-color: #f8f9fa;
+    padding: 2.4rem;
+    border-radius: 1.2rem;
+    margin-bottom: 3rem;
+
+    .search_box {
+      display: flex;
+      gap: 1.2rem;
+      margin-bottom: 1.6rem;
+
+      .search_input {
+        flex: 1;
+        padding: 1.4rem 1.8rem;
+        font-size: 1.6rem;
+        border: 0.2rem solid #e0e0e0;
+        border-radius: 0.8rem;
+        outline: none;
+        transition: border-color 0.3s ease;
+
+        &:focus {
+          border-color: g.$mainColor;
+        }
+
+        &::placeholder {
+          color: #999;
+        }
+      }
+
+      .location_button {
+        padding: 1.4rem 2.4rem;
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: #fff;
+        background-color: g.$mainColor;
+        border: none;
+        border-radius: 0.8rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        white-space: nowrap;
+
+        &:hover:not(:disabled) {
+          background-color: g.$mainColor;
+        }
+
+        &:disabled {
+          background-color: #ccc;
+          cursor: not-allowed;
+        }
+      }
+    }
+
+    .sort_section {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      label {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: #333;
+      }
+
+      .sort_select {
+        padding: 0.8rem 1.2rem;
+        font-size: 1.4rem;
+        border: 0.2rem solid #e0e0e0;
+        border-radius: 0.6rem;
+        cursor: pointer;
+        background-color: #fff;
+        outline: none;
+
+        &:focus {
+          border-color: g.$mainColor;
+        }
+      }
+    }
+
+    .location_info {
+      margin-top: 1.6rem;
+      padding: 1.2rem;
+      background-color: #e8f5e9;
+
+      border-radius: 0.6rem;
+      font-size: 1.4rem;
+      color: #2e7d32;
+    }
+  }
+
+  .store_list_section {
+    .store_count {
+      font-size: 1.6rem;
+      color: #666;
+      margin-bottom: 2rem;
+
+      strong {
+        color: g.$mainColor;
+        font-weight: 700;
+      }
+    }
+
+    .store_list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
+
+      .store_item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2rem;
+        background-color: #fff;
+        border: 0.1rem solid #e0e0e0;
+        border-radius: 1rem;
+        transition: all 0.3s ease;
+
+        &:hover {
+          box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.1);
+          border-color: g.$mainColor;
+        }
+
+        .store_info {
+          flex: 1;
+
+          .store_name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin: 0 0 0.8rem 0;
+          }
+
+          .store_address {
+            font-size: 1.4rem;
+            color: #666;
+            line-height: 1.6;
+            margin: 0 0 0.8rem 0;
+          }
+
+          .store_distance {
+            font-size: 1.4rem;
+            color: #97c24e;
+            margin: 0;
+
+            strong {
+              font-weight: 700;
+            }
+          }
+        }
+
+        .store_actions {
+          .btn_directions {
+            padding: 1rem 2rem;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #fff;
+            background-color: #444;
+            border: none;
+            border-radius: 0.6rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+              background-color: #1a1a1a;
+            }
+          }
+        }
+      }
+    }
+
+    .no_results {
+      text-align: center;
+      padding: 6rem 2rem;
+      color: #999;
+
+      p {
+        font-size: 1.6rem;
+        margin: 0.8rem 0;
+
+        &:first-child {
+          font-size: 2rem;
+          font-weight: 700;
+          color: #666;
+        }
+      }
+    }
+  }
+}
+
+// 반응형 디자인
+@media (max-width: 768px) {
+  .store_locator {
+    padding: 2rem 1.6rem;
+
+    .store_locator_header {
+      margin-bottom: 3rem;
+
+      .store_locator_title {
+        font-size: 2.8rem;
+
+        .crocs_logo {
+          font-size: 3.6rem;
+        }
+      }
+
+      .store_locator_subtitle {
+        font-size: 1.4rem;
+      }
+    }
+
+    .search_section {
+      padding: 1.6rem;
+
+      .search_box {
+        flex-direction: column;
+
+        .search_input {
+          font-size: 1.4rem;
+        }
+
+        .location_button {
+          font-size: 1.4rem;
+        }
+      }
+    }
+
+    .store_list_section {
+      .store_list {
+        .store_item {
+          flex-direction: column;
+          align-items: center;
+          gap: 1.6rem;
+
+          .store_info {
+            .store_name {
+              font-size: 1.6rem;
+            }
+
+            .store_address {
+              font-size: 1.3rem;
+            }
+          }
+
+          .store_actions {
+            width: 100%;
+
+            .btn_directions {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .store_locator {
+    padding: 1.6rem 1.2rem;
+
+    .store_locator_header {
+      .store_locator_title {
+        font-size: 2.4rem;
+
+        .crocs_logo {
+          font-size: 3.2rem;
+        }
+      }
+    }
+
+    .search_section {
+      padding: 1.2rem;
+
+      .location_info {
+        font-size: 1.2rem;
+      }
+    }
+
+    .store_list_section {
+      .store_list {
+        .store_item {
+          padding: 1.6rem;
+
+          .store_info {
+            .store_name {
+              font-size: 1.6rem;
+            }
+
+            .store_address {
+              font-size: 1.2rem;
+            }
+
+            .store_distance {
+              font-size: 1.2rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}

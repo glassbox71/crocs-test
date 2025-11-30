@@ -1,0 +1,67 @@
+// WomenFilterMenu 컴포넌트 스타일
+@use '../../App.scss' as g;
+
+%menu_wrap-style {
+    @include g.flex($jc: null, $ai: center, $fd: column, $fw: null, $gap: 2.4rem);
+    width: 100%;
+
+    &--title_wrap,
+    .title--wrap {
+        @include g.flex($jc: space-between, $ai: center, $fd: null, $fw: null, $gap: 2rem);
+        width: 100%;
+
+        &--title .title {
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        &--title__toggle .title--toggle {
+            width: 2.4rem;
+            height: 2.4rem;
+        }
+    }
+}
+
+.filter-menu {
+    &__wrap {
+        @extend %menu_wrap-style;
+
+        &--color {
+            @include g.flex($jc: start, $ai: center, $fd: row, $fw: null, $gap: 1.6rem);
+
+            .filter-menu__item {
+                @include g.flex($jc: center, $ai: center, $fd: row, $fw: null, $gap: 1.8rem);
+                width: 6.2rem;
+                height: 3.2rem;
+                background-color: #f5f5f5;
+                border-radius: 4px;
+
+                .filter-menu__select_color {
+                    width: 1.6rem;
+                    height: 1.6rem;
+                    border-radius: 50%;
+                }
+
+                .select-pink {
+                    background-color: #ff69b4;
+                }
+
+                .select-black {
+                    background-color: #000;
+                }
+
+                .filter-menu__close-link {
+                    border-radius: 0.4rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    .close-btn {
+                        display: block;
+                        width: 0.8rem;
+                    }
+                }
+            }
+        }
+    }
+}

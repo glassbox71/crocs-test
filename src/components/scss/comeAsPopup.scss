@@ -1,0 +1,151 @@
+@use "../../App.scss" as g;
+
+.come_as_popup_wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); // 배경 어둡게
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+
+  .come_as_wrap {
+    @include g.flex($fd: column);
+    position: relative;
+    max-width: 500px;
+    height: fit-content;
+    margin: 100px auto;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    padding-bottom: 5rem;
+    background: #fff;
+    // padding: 5rem;
+
+    > .close_btn {
+      position: absolute;
+      font-size: 2rem;
+      padding: 0.4rem 1rem;
+      top: 2%;
+      right: 3%;
+      background: linear-gradient(135deg, g.$mainColor 0%, #b0d96e 100%);
+      box-shadow: 0 4px 15px rgba(102, 222, 27, 0.3);
+      font-weight: 900;
+      color: #fff;
+      border-radius: 50%;
+
+      &:hover {
+        box-shadow: 0 6px 20px rgba(102, 222, 27, 0.4);
+      }
+    }
+
+    .jibbitz {
+      position: absolute;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .jibbitz_img1 {
+      left: 5%;
+      top: 5%;
+      width: 5rem;
+      animation-delay: 0s;
+    }
+
+    .jibbitz_img2 {
+      right: 0%;
+      bottom: 35%;
+      width: 12rem;
+      animation-delay: 1s;
+      animation-duration: 5s;
+    }
+
+    .jibbitz_img3 {
+      left: 5%;
+      bottom: 15%;
+      width: 8rem;
+      animation-delay: 3s;
+      animation-duration: 3s;
+    }
+
+    // 둥둥 뜨는 keyframes 정의
+    @keyframes float {
+      0% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-15px); // 위로 살짝 이동
+      }
+      100% {
+        transform: translateY(0px);
+      }
+    }
+
+    > div {
+      flex: 1;
+    }
+
+    .img_box {
+      // border-radius: 50%;
+      width: 500px;
+      // background-color: #ddd;
+      /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#f1ffe8+0,a9abf2+48,a9abf2+54,ffffdc+100 */
+      background: linear-gradient(
+          124deg,
+          rgba(255, 255, 255, 0.7) 1.58%,
+          rgba(255, 251, 251, 0.7) 103.42%
+        ),
+        linear-gradient(
+          45deg,
+          #f1ffe8 0%,
+          #a9abf2 48%,
+          #a9abf2 54%,
+          #ffffdc 100%
+        );
+      /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      border-radius: 10px 10px 0 0;
+      .img {
+        width: 300px;
+      }
+    }
+
+    .text_box {
+      @include g.flex($fd: column);
+      padding-top: 2rem;
+      h3 {
+        font-size: 2.8rem;
+        font-weight: 900;
+      }
+
+      p {
+        font-weight: 500;
+        text-align: center;
+      }
+    }
+
+    a {
+      display: block;
+      width: 40rem;
+      height: 4rem;
+      border-radius: 50px;
+      border: none;
+      font-weight: bold;
+      font-size: 1.6rem;
+      line-height: 4rem;
+      text-align: center;
+      background: linear-gradient(135deg, g.$mainColor 0%, #b0d96e 100%);
+      box-shadow: 0 4px 15px rgba(102, 222, 27, 0.3);
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(102, 222, 27, 0.4);
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+    }
+  }
+}

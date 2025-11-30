@@ -1,0 +1,173 @@
+@use '../../App.scss' as g;
+
+.search_wrap {
+    position: fixed;
+    width: 100%;
+    height: 50rem;
+    background: rgba($color: #eee, $alpha: 0.4);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    padding-top: 8rem;
+    top: 0;
+    left: 0;
+    margin: 0 auto;
+    border-radius: 0 0 1rem 1rem;
+    z-index: 2000;
+    // 부드러운 slide-down 애니메이션
+    animation: slideDown 0.5s ease-out;
+
+    &.open.subpage,
+    &.open.scrolled {
+        background: rgba($color: #aaa, $alpha: 0.4); // 예시로 메인 컬러를 반투명하게
+    }
+
+    .close_btn {
+        position: absolute;
+        top: 6%;
+        right: 4%;
+        // z-index: 9999;
+        img {
+            width: 3.2rem;
+        }
+    }
+
+    .search_top {
+        @include g.flex();
+        width: 100%;
+
+        .search_input {
+            position: relative;
+            @include g.flex();
+            width: 140rem;
+            margin: 0 auto;
+
+            > input {
+                width: 100%;
+                height: 5rem;
+                background: g.$mainColor;
+                border-radius: 5rem;
+                text-align: left;
+                margin: 0 auto;
+                border: none;
+                padding: 0 4rem;
+                line-height: 5rem;
+                font-weight: 600;
+                color: #fff;
+
+                &::placeholder {
+                    color: #fff;
+                }
+            }
+
+            .search_btn {
+                position: absolute;
+                top: 50%;
+                right: 0;
+                transform: translateY(-50%);
+            }
+        }
+    }
+
+    .search_bottom {
+        position: relative;
+        width: 140rem;
+        margin: 0 auto;
+        @include g.flex($ai: flex-start);
+        padding: 4rem 3rem 0;
+
+        .search_left {
+            @include g.flex($gap: 18rem, $ai: stretch);
+
+            .recent_searches_wrap,
+            .hashtag_wrap {
+                min-height: 10rem;
+                text-align: start;
+                padding-bottom: 1rem;
+            }
+            .recent_searches_wrap {
+                width: 16rem;
+                display: flex;
+                flex-direction: column;
+                // align-items: flex-end;
+                .recent_search_list {
+                    width: 100%;
+                    font-weight: 700;
+                    font-size: 1.2rem;
+                    line-height: 1.6rem;
+                    padding: 1rem;
+                    color: #444;
+                    li {
+                        @include g.flex($ai: center);
+
+                        &.none_searche {
+                            color: #777;
+                        }
+                    }
+                }
+                button {
+                    font-size: 1.2rem;
+                    line-height: 2;
+                    color: #777;
+                    padding: 0;
+                    margin-top: 0.5rem;
+                    margin-left: auto;
+                    > span {
+                        margin-left: 2rem;
+                    }
+                }
+            }
+
+            .hashtag_wrap {
+                width: 30rem;
+                .hashtag_list {
+                    @include g.flex($gap: auto, $fw: wrap, $jc: none);
+                    gap: 1.2rem 1.2rem; // 세로 1.2rem, 가로 2rem
+                    padding: 1rem;
+                    border-radius: 1rem;
+                    max-width: 30rem;
+
+                    .tag {
+                        display: inline-block;
+                        background: #eee;
+                        padding: 0.6rem 1.8rem;
+                        border-radius: 3rem;
+                        font-size: 1.4rem;
+                        font-weight: 700;
+                        white-space: nowrap;
+
+                        &:hover {
+                            background: g.$mainColor;
+                        }
+                    }
+                }
+            }
+        }
+
+        .search_right {
+            position: absolute;
+            top: 6rem;
+            right: 3rem;
+
+            a {
+                display: block;
+                width: 60rem;
+                height: 20rem;
+                border-radius: 1rem;
+                object-fit: contain;
+                overflow: hidden;
+            }
+        }
+    }
+}
+
+// 검색창 slide-down 애니메이션
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

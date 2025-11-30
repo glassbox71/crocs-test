@@ -1,0 +1,97 @@
+@use "../../App.scss" as g;
+
+// ============================================
+// 공통 스타일 (Shared Styles)
+// ============================================
+
+%link-base {
+  @include g.flex($jc: center, $gap: 0.4rem);
+  height: 100%;
+  background-color: #f6faeb;
+  border-radius: 0.4rem;
+}
+
+// ============================================
+// Breadcrumbs 컴포넌트
+// ============================================
+
+.breadcrumbs {
+  &__list {
+    @include g.flex($jc: null, $ai: null, $fd: null, $fw: null, $gap: 0.4rem);
+    font-size: 1.2rem;
+    font-weight: 600;
+    height: 2.5rem;
+    margin-bottom: 1rem;
+
+    // 섹션 구분자 스타일
+    &--section {
+      width: 0.8rem;
+      height: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &--home,
+    &--women,
+    &--Fur-lined {
+      @include g.flex($gap: 0);
+      @extend %link-base;
+      width: fit-content;
+      height: 100%;
+      padding-left: 5px;
+      background-color: #f6faeb;
+      border-radius: 0.4rem;
+      &_link {
+        @extend %link-base;
+        width: fit-content;
+        // height: 100%;
+        // padding: 0 10px;
+        // background-color: #f6faeb;
+        // border-radius: 0.4rem;
+      }
+      .close_btn {
+        img {
+          width: 0.8rem;
+        }
+      }
+    }
+
+    &--home {
+      img {
+        width: 1.6rem;
+      }
+      &_link {
+        @extend %link-base;
+        width: 2.5rem;
+        padding: 0;
+      }
+    }
+
+    &--Fur-lined {
+      &_link {
+        @extend %link-base;
+        gap: 0.6rem;
+      }
+    }
+  }
+
+  &__title {
+    width: 26.8rem;
+    margin-top: 1.6rem;
+    margin-bottom: 2.4rem;
+
+    h2 {
+      width: 100%;
+      font-size: 2.4rem;
+      font-weight: 800;
+    }
+  }
+
+  &__line {
+    width: 29.2rem;
+    height: 0.1rem;
+    background-color: #ebebeb;
+    text-align: center;
+  }
+}

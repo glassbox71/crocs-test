@@ -1,0 +1,1108 @@
+@use '../../App.scss' as g;
+
+// ============================================
+// 공통 스타일 (Shared Styles)
+// ============================================
+
+%link-base {
+    @include g.flex($jc: center, $gap: 0.4rem);
+    height: 100%;
+    background-color: #f6faeb;
+    border-radius: 0.4rem;
+}
+
+%menu_wrap-style {
+    @include g.flex($jc: null, $fd: column, $gap: 2.4rem);
+    width: 100%;
+}
+
+%btn-menu-style {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    font-size: 1.4rem;
+    border: 1px solid #ebebeb;
+    border-radius: 4px;
+    background-color: #fff;
+    text-align: center;
+    transition: all 0.2s ease;
+    color: #ccc;
+    // line-height: 100%;
+
+    .btn-menu__button {
+        width: 100%;
+        height: 100%;
+        font-size: 1rem;
+        font-weight: 600;
+        line-height: 2.8rem;
+        transition: color 0.2s ease;
+    }
+
+    &:hover {
+        border: 1px solid g.$mainColor;
+        color: g.$mainColor;
+    }
+
+    &.active {
+        background-color: g.$mainColor;
+        border: 1px solid g.$mainColor;
+        color: g.$subColor;
+    }
+}
+
+// ============================================
+// Breadcrumbs 컴포넌트
+// ============================================
+
+// .breadcrumbs {
+//     &__list {
+//         @include g.flex($jc: null, $ai: null, $fd: null, $fw: null, $gap: 0.4rem);
+//         font-size: 1.2rem;
+//         font-weight: 400;
+//         height: 2.5rem;
+
+//         // 섹션 구분자 스타일
+//         &--section {
+//             width: 0.8rem;
+//             height: 2.5rem;
+//             display: flex;
+//             align-items: center;
+//             justify-content: center;
+//         }
+
+//         &--home,
+//         &--women,
+//         &--Fur-lined {
+//             &_link {
+//                 @extend %link-base;
+//                 width: fit-content;
+//                 height: 100%;
+//                 padding: 0 10px;
+//                 background-color: #f6faeb;
+//                 border-radius: 0.4rem;
+//                 img {
+//                     width: 0.8rem;
+//                 }
+//             }
+//         }
+
+//         &--home {
+//             &_link {
+//                 @extend %link-base;
+//                 width: 2.5rem;
+//                 padding: 0;
+//                 img {
+//                     width: 1.3rem;
+//                 }
+//             }
+//         }
+
+//         &--Fur-lined {
+//             &_link {
+//                 @extend %link-base;
+//                 gap: 0.6rem;
+//             }
+//         }
+//     }
+
+//     &__title {
+//         width: 26.8rem;
+//         margin-top: 1.6rem;
+//         margin-bottom: 2.4rem;
+
+//         h2 {
+//             width: 100%;
+//             font-size: 3.2rem;
+//             font-weight: 600;
+//         }
+//     }
+
+//     &__line {
+//         width: 29.2rem;
+//         height: 0.1rem;
+//         background-color: #ebebeb;
+//         text-align: center;
+//     }
+// }
+
+// ============================================
+// LeftNavigation 컴포넌트
+// ============================================
+
+.left_nav__section_wrap {
+    color: g.$subColor;
+}
+
+.left_nav {
+    width: 32.4rem;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 2.8rem;
+    padding: 2.8rem 1.6rem;
+    border-radius: 1rem;
+    background-color: #fafafd;
+}
+
+// ============================================
+// ColorBadge 컴포넌트
+// ============================================
+
+// .color-badge {
+//     width: 1rem;
+//     height: 1rem;
+//     border-radius: 50px;
+//     cursor: pointer;
+//     // transition: transform 0.2s ease;
+
+//     &:hover {
+//         transform: scale(1.2);
+//     }
+
+//     &--black {
+//         background-color: #000;
+//     }
+//     &--brown {
+//         background-color: rgba(150, 105, 74, 1);
+//     }
+//     &--navy {
+//         background-color: #043896;
+//     }
+//     &--pink {
+//         background-color: #ff69b4;
+//     }
+//     &--gray {
+//         background-color: #cccccc;
+//     }
+//     &--white {
+//         background-color: #ffffff;
+//         border: 1px solid #ccc;
+//     }
+//     &--red {
+//         background-color: #ff0000;
+//     }
+//     &--orange {
+//         background-color: #ffcc00;
+//     }
+//     &--purple {
+//         background-color: #dbb2ff;
+//     }
+//     &--yellow {
+//         background-color: #ffff00;
+//     }
+//     &--mint {
+//         background-color: #aaf0d1;
+//     }
+//     &--light-green {
+//         background-color: #ccff99;
+//     }
+//     &--green {
+//         background-color: #00cd00;
+//     }
+//     &--sky-blue {
+//         background-color: #9ad2ff;
+//     }
+//     &--blue {
+//         background-color: #0000ff;
+//     }
+// }
+
+// ============================================
+// ColorMenu 컴포넌트
+// ============================================
+
+// .color-menu {
+//     &__wrap {
+//         @extend %menu_wrap-style;
+//     }
+// }
+
+// .select__color--wrap {
+//     width: 100%;
+//     @include g.flex($jc: space-between, $ai: center, $fd: row, $fw: wrap, $gap: 1.5rem 3rem);
+
+//     &_list {
+//         gap: 0.6rem;
+
+//         .select__color--link {
+//             @include g.flex($jc: null, $ai: center, $fd: column, $fw: null, $gap: 0.6rem);
+//             width: 3.2rem;
+//             font-size: 11px;
+//             font-weight: 400;
+
+//             .color_select {
+//                 width: 2.4rem;
+//                 height: 2.4rem;
+//                 border-radius: 50%;
+//             }
+
+//             .black {
+//                 background-color: #000;
+//             }
+//             .gray {
+//                 background-color: #cccccc;
+//             }
+//             .white {
+//                 background-color: #ffffff;
+//                 border: 1px solid #ccc;
+//             }
+//             .red {
+//                 background-color: #ff0000;
+//             }
+//             .pink {
+//                 background-color: #ff69b4;
+//             }
+//             .brown {
+//                 background-color: #aa6400;
+//             }
+//             .orange {
+//                 background-color: #ffcc00;
+//             }
+//             .purple {
+//                 background-color: #dbb2ff;
+//             }
+//             .yellow {
+//                 background-color: #ffff00;
+//             }
+//             .mint {
+//                 background-color: #aaf0d1;
+//             }
+//             .light-green {
+//                 background-color: #ccff99;
+//             }
+//             .green {
+//                 background-color: #00cd00;
+//             }
+//             .sky-blue {
+//                 background-color: #9ad2ff;
+//             }
+//             .blue {
+//                 background-color: #0000ff;
+//             }
+//             .navy {
+//                 background-color: #043896;
+//             }
+//         }
+//     }
+// }
+
+// ============================================
+// ColorMenu 추가 스타일
+// 기존 WomenComponents.scss에 추가하세요
+// ============================================
+
+// 선택된 컬러 아이템 스타일
+// .select__color--wrap_list {
+//     transition: all 0.3s ease;
+
+//     &.selected {
+//         .select__color--link {
+//             background-color: #f0f8ff;
+//             border-radius: 8px;
+//         }
+
+//         .color_select-text {
+//             font-weight: 600;
+//             color: #007bff;
+//         }
+//     }
+
+//     &:hover {
+//         .select__color--link {
+//             background-color: #f5f5f5;
+//             border-radius: 8px;
+//         }
+//     }
+// }
+
+// // 체크마크 스타일
+// .color_select {
+//     position: relative;
+
+//     .color-check-mark {
+//         position: absolute;
+//         top: 50%;
+//         left: 50%;
+//         transform: translate(-50%, -50%);
+//         color: white;
+//         font-size: 18px;
+//         font-weight: bold;
+//         text-shadow: 0 0 3px rgba(0, 0, 0, 0.8), 1px 1px 2px rgba(0, 0, 0, 0.6);
+//         z-index: 1;
+//     }
+
+//     // 흰색/밝은 색상에는 검은색 체크마크
+//     &.white,
+//     &.yellow,
+//     &.mint,
+//     &.light-green,
+//     &.sky-blue {
+//         .color-check-mark {
+//             color: #333;
+//             text-shadow: 0 0 3px rgba(255, 255, 255, 0.8), 1px 1px 2px rgba(255, 255, 255, 0.6);
+//         }
+//     }
+// }
+
+// // 토글 애니메이션
+// .select__color--wrap {
+//     animation: slideDown 0.3s ease;
+// }
+
+// @keyframes slideDown {
+//     from {
+//         opacity: 0;
+//         max-height: 0;
+//         overflow: hidden;
+//     }
+//     to {
+//         opacity: 1;
+//         max-height: 1000px;
+//     }
+// }
+
+// // 선택된 개수 표시 (옵션)
+// .color-menu__wrap--title {
+//     display: flex;
+//     align-items: center;
+//     gap: 8px;
+
+//     .selected-count {
+//         display: inline-flex;
+//         align-items: center;
+//         justify-content: center;
+//         min-width: 20px;
+//         height: 20px;
+//         padding: 0 6px;
+//         background-color: #007bff;
+//         color: white;
+//         border-radius: 10px;
+//         font-size: 12px;
+//         font-weight: 600;
+//     }
+// }
+
+// ============================================
+// 🎨 ColorMenu 색상 표시 스타일
+// WomenComponents.scss 파일 맨 아래에 이 코드를 추가하세요!
+// ============================================
+
+// 체크마크 스타일
+.color_select {
+    position: relative;
+
+    // 체크마크 (어두운 배경용 - 흰색)
+    .color-check-mark.light {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        text-shadow: 0 0 4px rgba(0, 0, 0, 0.9);
+        z-index: 1;
+    }
+
+    // 체크마크 (밝은 배경용 - 검은색)
+    .color-check-mark.dark {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #333;
+        font-size: 18px;
+        font-weight: bold;
+        text-shadow: 0 0 4px rgba(255, 255, 255, 0.9);
+        z-index: 1;
+    }
+}
+
+// 선택된 컬러 아이템 스타일
+.select__color--wrap_list {
+    transition: all 0.3s ease;
+
+    // 선택된 상태
+    &.selected {
+        .select__color--link {
+            background-color: #f0f8ff;
+            border-radius: 8px;
+        }
+
+        .color_select {
+            border-width: 3px;
+            border-color: #007bff;
+            transform: scale(1.05);
+            box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+        }
+
+        .color_select-text {
+            font-weight: 600;
+            color: #007bff;
+        }
+    }
+
+    // 호버 효과
+    &:hover {
+        .select__color--link {
+            background-color: #f5f5f5;
+            border-radius: 8px;
+        }
+
+        .color_select {
+            transform: scale(1.05);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        }
+    }
+}
+
+// ============================================
+// FilterMenu 컴포넌트
+// ============================================
+
+// .filter-menu {
+//     &__wrap {
+//         @extend %menu_wrap-style;
+
+//         &--color {
+//             @include g.flex($jc: start, $ai: center, $fd: row, $fw: null, $gap: 1.6rem);
+
+//             .filter-menu__item {
+//                 @include g.flex($jc: center, $ai: center, $fd: row, $fw: null, $gap: 1.8rem);
+//                 width: 6.2rem;
+//                 height: 3.2rem;
+//                 background-color: #f5f5f5;
+//                 border-radius: 4px;
+
+//                 .filter-menu__select_color {
+//                     width: 1.6rem;
+//                     height: 1.6rem;
+//                     border-radius: 50%;
+//                 }
+
+//                 .select-pink {
+//                     background-color: #ff69b4;
+//                 }
+
+//                 .select-black {
+//                     background-color: #000;
+//                 }
+
+//                 .filter-menu__close-link {
+//                     border-radius: 0.4rem;
+//                     display: flex;
+//                     align-items: center;
+//                     justify-content: center;
+
+//                     .close-btn {
+//                         display: block;
+//                         width: 0.8rem;
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+
+// ============================================
+// FilterMenu 추가 스타일
+// 기존 WomenComponents.scss에 추가하세요
+// ============================================
+
+.filter-menu {
+    margin-bottom: 20px;
+
+    .filter-menu__wrap {
+        // 기존 menu_wrap-style 스타일 적용
+    }
+
+    .filter-menu__wrap--title_wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #e0e0e0;
+
+        .filter-menu__wrap--title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 0;
+
+            .selected-count {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                min-width: 24px;
+                height: 24px;
+                padding: 0 8px;
+                background-color: #007bff;
+                color: white;
+                border-radius: 12px;
+                font-size: 13px;
+                font-weight: 600;
+            }
+        }
+
+        .filter-clear-btn {
+            font-size: 14px;
+            color: #dc3545;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: all 0.2s;
+
+            &:hover {
+                background-color: #fee;
+                color: #c82333;
+            }
+        }
+    }
+
+    .filter-tags__wrap {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 10px 0;
+    }
+
+    .filter-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 12px;
+        background-color: #f0f0f0;
+        border-radius: 20px;
+        font-size: 14px;
+        transition: all 0.2s;
+
+        &:hover {
+            background-color: #e0e0e0;
+        }
+
+        &--color {
+            background-color: #e3f2fd;
+
+            &:hover {
+                background-color: #bbdefb;
+            }
+        }
+
+        .filter-tag__color-dot {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid #ddd;
+            flex-shrink: 0;
+        }
+
+        .filter-tag__text {
+            color: #333;
+            font-weight: 500;
+        }
+
+        .filter-tag__remove {
+            background: none;
+            border: none;
+            color: #666;
+            font-size: 20px;
+            line-height: 1;
+            cursor: pointer;
+            padding: 0;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.2s;
+
+            &:hover {
+                background-color: rgba(255, 255, 255, 0.8);
+                color: #dc3545;
+            }
+        }
+    }
+
+    .filter-empty-message {
+        color: #999;
+        font-size: 14px;
+        text-align: center;
+        padding: 30px 0;
+        margin: 0;
+    }
+}
+
+// 애니메이션
+.filter-tag {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+// ============================================
+// SizeMenu 컴포넌트
+// ============================================
+
+.size-menu {
+    &__wrap {
+        @extend %menu_wrap-style;
+
+        &--size {
+            @include g.flex($jc: flex-start, $ai: center, $fd: row, $fw: wrap, $gap: 0.8rem);
+
+            .size-menu__item {
+                width: 5.2rem;
+                height: 2.8rem;
+
+                .size-menu__link {
+                    @extend %btn-menu-style;
+                }
+            }
+        }
+    }
+}
+
+// ============================================
+// PriceMenu 컴포넌트
+// ============================================
+
+.title--wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+
+    .title {
+        font-size: 1.8rem;
+        font-weight: 600;
+    }
+
+    .title--toggle {
+        width: 2.4rem;
+        height: 2.4rem;
+
+        button {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}
+
+.price-menu {
+    &__wrap {
+        @extend %menu_wrap-style;
+        gap: 1.2rem;
+
+        &--price-range {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+    }
+}
+
+// ============================================
+// PriceRange 컴포넌트
+// ============================================
+
+.price-menu__item {
+    width: 100%;
+    height: 2.8rem;
+
+    .price-menu__link {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border: 1px solid #ebebeb;
+        border-radius: 4px;
+        background-color: #fff;
+        transition: all 0.2s ease;
+        color: #ccc;
+
+        .price-menu__button {
+            width: 100%;
+            height: 100%;
+            font-size: 1rem;
+            font-weight: 600;
+            line-height: 2.8rem;
+            transition: color 0.2s ease;
+        }
+
+        &:hover {
+            border: 1px solid g.$mainColor;
+            color: g.$mainColor;
+        }
+
+        &.active {
+            background-color: g.$mainColor;
+            border: 1px solid g.$mainColor;
+            color: g.$subColor;
+        }
+    }
+}
+
+// ============================================
+// ProductList 컴포넌트
+// ============================================
+
+.product-card__section_wrap {
+    .product-card__wrap {
+        .product-card__item_list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.6rem;
+        }
+    }
+}
+
+// ============================================
+// ProductCard 컴포넌트
+// ============================================
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    height: 60rem;
+    border-radius: 10px;
+    padding: 2rem 2rem;
+    transition: all 0.3s ease;
+    outline: 1px solid #cccccc;
+
+    .product-card__color,
+    .product-card__size {
+        max-height: 200px;
+        opacity: 1;
+        margin-top: 0;
+    }
+
+    &:hover {
+        outline: 1px solid #cccccc;
+        box-shadow: 0 0 12px 2.5px rgba(0, 0, 0, 0.08);
+        // transform: translateY(-0.4rem);
+
+        // .product-card__color,
+        // .product-card__size {
+        //     max-height: 200px;
+        //     opacity: 1;
+        //     margin-top: 0;
+        // }
+    }
+
+    &__img_info_wrap {
+        display: block;
+        width: 32.8rem;
+        height: fit-content;
+        background-color: #fff;
+        border-radius: 0.8rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.6rem;
+    }
+}
+
+// ============================================
+// ProductCardSwiper 컴포넌트
+// ============================================
+
+.product-card__img_wrap {
+    @include g.flex($jc: center, $gap: null);
+    position: relative;
+    width: 32.8rem;
+    height: 38rem;
+    border-radius: 1rem;
+    overflow: hidden;
+
+    img {
+        width: 20rem;
+    }
+
+    .swiper-wrapper {
+        width: 100%;
+        height: 100%;
+    }
+
+    .swiper-slide {
+        @include g.flex($jc: center, $gap: null);
+        width: 100%;
+        height: 100%;
+    }
+
+    .product-card__link {
+        @include g.flex($jc: center, $gap: null);
+        position: relative;
+        width: 100%;
+        height: 100%;
+        border-radius: 1rem;
+        background: #fcfcff
+            linear-gradient(to bottom, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.035) 100%);
+
+        .product-card__img {
+            display: block;
+            width: 22rem;
+            height: auto;
+        }
+    }
+
+    // Swiper Navigation Arrows
+    .swiper-button-prev,
+    .swiper-button-next {
+        width: 2.4rem;
+        height: 2.4rem;
+        color: #b5d766;
+
+        &::after {
+            font-size: 2.4rem;
+            font-weight: bold;
+        }
+    }
+
+    .swiper-button-prev.product-card__arrow_left {
+        left: 1.5rem;
+    }
+
+    .swiper-button-next.product-card__arrow_right {
+        right: 1.5rem;
+    }
+
+    // Swiper Pagination Progress Bar
+    .swiper-pagination.product-card__pagination {
+        bottom: 1.6rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 28rem;
+        height: 0.2rem;
+        background-color: rgba(0, 0, 0, 0.1);
+        border-radius: 0.2rem;
+        top: auto;
+
+        .swiper-pagination-progressbar-fill {
+            background-color: #b5d766;
+            border-radius: 0.2rem;
+        }
+    }
+}
+
+// ============================================
+// ProductName 컴포넌트
+// ============================================
+
+.product-card__name--warp {
+    // width: 32.8rem;
+    height: 4.5rem;
+
+    > p {
+        width: 100%;
+        // font-size: 2.4rem;
+        font-weight: 600;
+        color: g.$subColor;
+        line-height: 2.9rem;
+    }
+}
+
+// ============================================
+// ProductPrice 컴포넌트
+// ============================================
+
+.product-card__price_wrap {
+    // width: 32.8rem;
+    // font-family: 'all-round-gothic', sans-serif;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 1rem 0;
+
+    .discount-price {
+        color: g.$mainColor;
+    }
+
+    .product-card__price {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+
+        &_dc_rate {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: g.$subColor;
+        }
+
+        &_slel {
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: #d70000;
+        }
+
+        &_breadcrumbs__line {
+            width: 0.13rem;
+            height: 0.9rem;
+            background-color: #d9d9d9;
+        }
+
+        &_cost {
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: #ebebeb;
+            text-decoration: line-through;
+        }
+    }
+}
+
+// ============================================
+// ProductColorBadges 컴포넌트
+// ============================================
+
+// .product-card__color {
+//     justify-content: flex-start;
+//     width: 100%;
+
+//     max-height: 0;
+//     opacity: 0;
+//     overflow: visible;
+//     transition: max-height 0.5s ease, opacity 0.4s ease, margin-top 0.4s ease;
+
+//     &__title--wrap {
+//         p {
+//             font-size: 1.3rem;
+//             font-weight: 500;
+//             color: g.$subColor;
+//             margin-bottom: 0.8rem;
+//         }
+//     }
+
+//     .color-badge__wrap {
+//         // width: 100%;
+//         display: flex;
+//         justify-content: flex-start;
+//         align-items: center;
+//         flex-direction: row;
+//         gap: 0.8rem;
+//         overflow: visible;
+
+//         > .color-badge {
+//             width: 1rem;
+//             height: 1rem;
+//             border-radius: 50px;
+//         }
+//     }
+// }
+
+// ============================================
+// ProductSizeButtons 컴포넌트
+// ============================================
+
+// .product-card__size {
+//     justify-content: flex-start;
+//     width: 100%;
+
+//     max-height: 0;
+//     opacity: 0;
+//     overflow: hidden;
+//     transition: max-height 0.5s ease, opacity 0.4s ease, margin-top 0.4s ease;
+
+//     &__title--wrap {
+//         p {
+//             font-size: 1.3rem;
+//             font-weight: 500;
+//             color: g.$subColor;
+//             margin-bottom: 0.8rem;
+//         }
+//     }
+
+//     .product-card__size--btns__wrap {
+//         width: 100%;
+//         display: flex;
+//         justify-content: space-between;
+//         align-items: center;
+//         flex-wrap: wrap;
+//         gap: 0.4rem;
+//     }
+// }
+
+// ============================================
+// SizeButton 컴포넌트
+// ============================================
+
+// .size--btns__item {
+//     width: 4.8rem;
+//     height: 2.3rem;
+//     font-size: 1.1rem;
+//     font-weight: 400;
+//     color: #cccccc;
+//     font-family: 'all-round-gothic', sans-serif;
+
+//     .size--btns__link {
+//         display: flex;
+//         justify-content: center;
+//         align-items: center;
+//         width: 100%;
+//         height: 100%;
+//         border: 1px solid #ebebeb;
+//         border-radius: 4px;
+//         color: #cccccc;
+//         background-color: #ffffff;
+//         transition: all 0.2s ease;
+//         position: relative;
+
+//         .size--btns__button {
+//             width: 100%;
+//             height: 100%;
+//             font-size: 1.1rem;
+//             font-weight: 400;
+//         }
+
+//         &:hover {
+//             border: 1px solid g.$mainColor;
+//             color: g.$mainColor;
+//         }
+
+//         &.active {
+//             background-color: g.$mainColor;
+//             border: 1px solid g.$mainColor;
+//             color: g.$subColor;
+//         }
+
+//         &.sold-out {
+//             color: #ebebeb;
+//             background-color: #f9f9f9;
+//             cursor: not-allowed;
+//             pointer-events: none;
+
+//             .sold-out-line {
+//                 position: absolute;
+//                 width: 2.5rem;
+//                 height: 0.15rem;
+//                 background-color: #ebebeb;
+//                 transform: rotate(-45deg);
+//             }
+//         }
+//     }
+// }

@@ -1,0 +1,123 @@
+@use '../../App.scss' as g;
+
+.filtering_wrap {
+    .filtering_menu {
+        .filtering_menu_top {
+            @include g.flex();
+        }
+    }
+}
+// =========size menu=================
+.filter_menu {
+    margin-bottom: 2rem;
+    .filter_menu_top {
+        @include g.flex();
+        margin-bottom: 1rem;
+        .filter_menu_title {
+            @include g.flex();
+
+            .selected_count {
+                color: g.$mainColor;
+                border-radius: 50px;
+                font-size: 1.6rem;
+                font-weight: 600;
+            }
+        }
+
+        .filter_clear_btn {
+            font-size: 1.2rem;
+            color: g.$subColor;
+            transition: all 0.2s;
+
+            &:hover {
+                color: #c82333;
+            }
+        }
+    }
+
+    .filter_tags_wrap {
+        @include g.flex($fw: wrap, $gap: 8px);
+    }
+
+    .select_filter_tag_color_wrap {
+        display: inline-flex;
+        align-items: center;
+        width: fit-content;
+        gap: 0.5rem;
+        padding: 2px 4px;
+        background-color: #f0f0f0;
+        border-radius: 20px;
+        font-size: 1.2rem;
+        transition: all 0.2s;
+
+        .select_filter_tag_color {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50px;
+            border: 1px solid #ddd;
+            flex-shrink: 0;
+        }
+
+        .select_filter_tag_text {
+            color: #333;
+            font-weight: 500;
+        }
+        .select_filter_tag_remove {
+            color: #666;
+            transition: all 0.2s;
+
+            &:hover {
+                color: #dc3545;
+            }
+        }
+    }
+}
+
+// =========size menu=================
+
+.select_size_wrap {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem 0.5rem;
+    .size_menu_list {
+        .select_size_btn {
+            border: 1px solid #ddd;
+            width: 100%;
+
+            &:hover {
+                border: 1px solid g.$mainColor;
+            }
+        }
+    }
+}
+
+// =========color menu================
+
+.select_color_wrap {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    .color_list {
+        .select_color_btn {
+            width: 100%;
+            @include g.flex($fd: column, $jc: center, $gap: 0.5rem);
+            .select_color {
+                display: block;
+                width: 2rem;
+                height: 2rem;
+                border-radius: 50px;
+                border: 1px solid #ddd;
+
+                &:hover {
+                    border: 1px solid g.$mainColor;
+                    color: g.$mainColor;
+                }
+            }
+
+            .select_color_text {
+                font-size: 1.2rem;
+                font-weight: 600;
+            }
+        }
+    }
+}

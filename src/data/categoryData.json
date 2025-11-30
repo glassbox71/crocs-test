@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "Classic",
+    "image": "./images/Category-list__items_01.png",
+    "alt": "Classic_Category",
+    "backgroundColor": "background-color_HEX_EBFFF7",
+    "link": "/category/classic"
+  },
+  {
+    "id": 2,
+    "name": "Fleece",
+    "image": "./images/Category-list__items_02.png",
+    "alt": "Fleece_Category",
+    "backgroundColor": "background-color_HEX_F0DFFF",
+    "link": "/category/fleece"
+  },
+  {
+    "id": 3,
+    "name": "Platform",
+    "image": "./images/Category-list__items_03.png",
+    "alt": "Platform_Category",
+    "backgroundColor": "background-color_HEX_FFFECF",
+    "link": "/category/platform"
+  },
+  {
+    "id": 4,
+    "name": "Sandal",
+    "image": "./images/Category-list__items_04.png",
+    "alt": "Sandal_Category",
+    "backgroundColor": "background-color_HEX_FFF0FB",
+    "link": "/category/sandal"
+  },
+  {
+    "id": 5,
+    "name": "Sneaker",
+    "image": "./images/Category-list__items_05.png",
+    "alt": "Sneaker_Category",
+    "backgroundColor": "background-color_HEX_D9F7FE",
+    "link": "/category/sneaker"
+  }
+]

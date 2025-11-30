@@ -1,0 +1,188 @@
+@use "../../App.scss" as g;
+
+.nonmember_wrap {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+  box-shadow: 0 30px 60px rgba(20, 20, 21, 0.06);
+  border-radius: 1rem;
+  padding: 5rem 10rem 20rem;
+  @include g.flex($fd: column, $jc: center, $gap: none);
+
+  .title_wrap {
+    margin-bottom: 3rem;
+    .section_sub_title {
+      font-size: 2.4rem;
+      font-weight: 600;
+    }
+  }
+
+  .nonmember_form {
+    padding: 2rem;
+    @include g.flex($fd: column);
+    width: 400px;
+    margin: 0 auto;
+
+    > input {
+      width: 40rem;
+      height: 4rem;
+      border: none;
+      background: #eee;
+      border-radius: 50px;
+      padding-left: 2rem;
+      text-align: start;
+      font-weight: 600;
+    }
+
+    > button {
+      width: 40rem;
+      height: 4rem;
+      border-radius: 50px;
+      border: none;
+      font-weight: bold;
+      font-size: 1.6rem;
+      background: g.$subColor;
+      color: #fff;
+    }
+  }
+
+  // 에러 메시지 스타일 추가
+  .error_message {
+    color: #e74c3c;
+    font-size: 1.4rem;
+    margin-top: 1rem;
+    font-weight: 600;
+  }
+
+  // 주문 조회 결과 스타일 추가
+  .order_result {
+    margin-top: 3rem;
+    text-align: left;
+    width: 100%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+
+    .order_info_section,
+    .order_products_section,
+    .order_summary_section {
+      background: #f9f9f9;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      border-radius: 1rem;
+
+      h3 {
+        font-size: 1.8rem;
+        font-weight: bold;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 2px solid #000;
+      }
+
+      .info_row,
+      .summary_row {
+        @include g.flex($jc: space-between);
+        padding: 1rem 0;
+        border-bottom: 1px solid #e0e0e0;
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        .label {
+          font-weight: 500;
+          color: #666;
+          font-size: 1.4rem;
+        }
+
+        .value {
+          font-weight: 600;
+          color: #000;
+          font-size: 1.4rem;
+
+          &.status {
+            color: #27ae60;
+          }
+        }
+
+        &.total {
+          margin-top: 1rem;
+          padding-top: 1.5rem;
+          border-top: 2px solid #000;
+          font-size: 1.6rem;
+
+          .value {
+            color: #e74c3c;
+            font-size: 1.8rem;
+          }
+        }
+      }
+    }
+
+    .order_products_section {
+      .product_item {
+        @include g.flex($gap: 1.5rem);
+        padding: 1.5rem 0;
+        border-bottom: 1px solid #e0e0e0;
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        img {
+          width: 150px;
+          height: 150px;
+          padding: 1.2rem;
+          // object-fit: cover;
+          border-radius: 0.5rem;
+          background: #fff;
+        }
+
+        .product_details {
+          flex: 1;
+
+          .product_name {
+            font-weight: bold;
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+          }
+
+          .product_option,
+          .product_quantity {
+            font-size: 1.4rem;
+            color: #666;
+            margin: 0.3rem 0;
+          }
+
+          .product_price {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: #000;
+            margin-top: 0.8rem;
+          }
+        }
+      }
+    }
+
+    .back_button {
+      width: 100%;
+      max-width: 40rem;
+      height: 4rem;
+      margin: 2rem auto 0;
+      display: block;
+      border-radius: 50px;
+      border: none;
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.6rem;
+      background: g.$subColor;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+}

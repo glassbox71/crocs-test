@@ -1,0 +1,158 @@
+@use "../../App.scss" as g;
+
+.depth_wrap {
+  .depth1 {
+    @include g.flex();
+    background: transparent; // 투명하게 변경
+    // backdrop-filter 제거
+    width: 100%;
+    height: 44rem;
+    position: relative; // fixed → relative
+    border-radius: 0 0 1rem 1rem;
+    // 메뉴가 배경과 함께 0.5초 동안 부드럽게 나타남
+    animation: fadeInDown 0.5s ease-out;
+    .depth1_left {
+      padding: 0 10rem 0;
+      .depthmenu {
+        @include g.flex($fd: column, $gap: 1.2rem);
+        li {
+          a {
+            display: block;
+            width: 24rem;
+            height: 4.4rem;
+            line-height: 4.4rem;
+            // background-color: #66de1b;
+            background: #ccc;
+            border-radius: 1rem;
+            // font-size: 1.8rem;
+            font-weight: 600;
+            color: g.$subColor;
+            text-align: center;
+          }
+
+          &:hover {
+            a {
+              background: linear-gradient(
+                135deg,
+                g.$mainColor 0%,
+                #b0d96e 100%
+              );
+            }
+          }
+
+          &.active {
+            a {
+              background: linear-gradient(
+                135deg,
+                g.$mainColor 0%,
+                #b0d96e 100%
+              );
+            }
+          }
+
+          &.collabs {
+            a {
+              color: g.$mainColor;
+            }
+
+            &:hover {
+              a {
+                background: linear-gradient(
+                  135deg,
+                  g.$mainColor 0%,
+                  #b0d96e 100%
+                );
+                color: g.$subColor;
+              }
+            }
+
+            &.active {
+              a {
+                // background: g.$mainColor;
+                color: g.$subColor;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .depth1_right {
+      margin: 0 auto;
+      position: relative;
+
+      .submenu_wrap {
+        position: relative;
+
+        .menu_title {
+          position: absolute;
+          left: -12rem;
+          top: 0;
+          font-weight: 900;
+          font-size: 2rem;
+        }
+
+        .submenu {
+          @include g.flex($gap: auto, $fw: wrap, $jc: flex-start);
+          gap: 4rem 4rem;
+          border-radius: 1rem;
+          width: 100rem; // max-width → width로 변경
+          height: 36rem;
+          overflow: hidden;
+          align-content: flex-start;
+
+          li {
+            a {
+              @include g.flex($jc: center, $fd: column, $gap: 1.6rem);
+              background: #eee;
+              width: 28rem;
+              height: 16rem;
+              border-radius: 1rem;
+
+              img {
+                height: 8rem;
+              }
+              span {
+                height: 2.8rem;
+                line-height: 1.6rem;
+                font-weight: 700;
+              }
+            }
+
+            &:hover {
+              a {
+                background: linear-gradient(
+                  135deg,
+                  g.$mainColor 0%,
+                  #b0d96e 100%
+                );
+              }
+            }
+
+            &.active {
+              a {
+                background: linear-gradient(
+                  135deg,
+                  g.$mainColor 0%,
+                  #b0d96e 100%
+                );
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// 애니메이션 정의
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

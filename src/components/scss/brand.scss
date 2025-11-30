@@ -1,0 +1,39 @@
+@use '../../App.scss' as g;
+
+.brand_page {
+    position: relative;
+    .brand_banner_wrap {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        img {
+            width: 100%;
+        }
+    }
+    .inner {
+        position: relative;
+        padding-top: 800px;
+        .about_crocs_wrap {
+            @include g.flex($gap: 5rem);
+
+            div {
+                flex: 1;
+            }
+            .img_box {
+                width: fit-content;
+                img {
+                    width: 100%;
+                    border-radius: 1rem;
+                }
+            }
+
+            .text_box {
+                @include g.flex($fd: column, $ai: flex-start);
+                .about_title {
+                    font-size: 3.2rem;
+                }
+            }
+        }
+    }
+}

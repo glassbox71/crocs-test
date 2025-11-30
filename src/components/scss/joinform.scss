@@ -1,0 +1,189 @@
+@use "../../App.scss" as g;
+
+.join_form_wrap {
+  max-width: 82rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto auto;
+  gap: 20px;
+  form {
+    grid-column: 1/2;
+    grid-row: 1;
+    @include g.flex();
+    flex-direction: column;
+
+    .phone_admit {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      align-items: center;
+      p {
+        font-weight: 600;
+      }
+      .admit_input {
+        height: 4rem;
+        &::placeholder {
+          // font-size: 1.2rem;
+          font-weight: 400;
+        }
+      }
+    }
+
+    .form_line {
+      width: 100%;
+      border: 0.4px solid rgba($color: g.$subColor, $alpha: 0.3);
+    }
+
+    .required {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+
+      .required_title {
+        width: 100%;
+        margin-bottom: 2rem;
+        text-align: left;
+        font-weight: 600;
+        span {
+          margin-left: 0.2rem;
+          color: #66de1b;
+        }
+      }
+
+      .required_input {
+        // padding: 1.8rem 4rem;
+        width: 100%;
+        height: 4rem;
+        padding-left: 2rem;
+        // background-color: #eee;
+        border: 1px solid #ddd;
+        border-radius: 5rem;
+        &:focus {
+          outline: none !important;
+          border-color: g.$mainColor !important;
+        }
+      }
+
+      .required_content {
+        padding: 0 4rem 1.2rem;
+        font-size: 1.2rem;
+        color: #8a8a8a;
+      }
+
+      .password-message {
+        font-size: 1.3rem;
+        margin-top: 0.8rem;
+
+        &.valid {
+          color: #27ae60;
+        }
+
+        &.invalid {
+          color: #e74c3c;
+        }
+      }
+      .email-separator {
+        color: #333;
+        font-weight: 500;
+      }
+      .email-input-group {
+        @include g.flex($gap: 1rem);
+        .email-select {
+          width: 12rem !important;
+          padding: 1.2rem 3rem 1.2rem 1.5rem !important;
+          appearance: none !important;
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 9L1 4h10z'/%3E%3C/svg%3E") !important;
+          background-repeat: no-repeat !important;
+          background-position: right 1.5rem center !important;
+          background-size: 1rem !important;
+          background-color: white !important;
+          border: 1px solid #ddd !important;
+          border-radius: 50px !important;
+          font-size: 1.3rem !important;
+          color: #333 !important;
+          box-sizing: border-box !important;
+          cursor: pointer !important;
+
+          &:focus {
+            outline: none !important;
+            border-color: g.$mainColor !important;
+          }
+        }
+      }
+    }
+
+    .add_info {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      align-items: center;
+      p {
+        font-weight: 600;
+      }
+      input[type="date"] {
+        border: none;
+        padding: 0.8rem;
+        font-size: 1.4rem;
+      }
+      .gender_wrap {
+        @include g.flex($jc: unset, $gap: 1rem);
+        padding: 0.8rem;
+        .radio {
+          font-size: 1.4rem;
+          cursor: pointer;
+
+          input[type="radio"] {
+            display: none;
+
+            &:checked + .radio_custom {
+              border-color: g.$subColor;
+              background-color: g.$mainColor;
+            }
+          }
+
+          .radio_custom {
+            display: inline-block;
+            width: 1.2rem;
+            height: 1.2rem;
+            margin-right: 1rem;
+            border: 2px solid g.$subColor;
+            border-radius: 50%;
+            vertical-align: middle;
+            transition: 0.1s;
+          }
+        }
+      }
+    }
+  }
+
+  .join_btn {
+    grid-column: 1/3;
+    grid-row: 2;
+    display: block;
+    justify-self: center;
+    width: 40rem;
+    height: 4rem;
+    text-align: center;
+    font-weight: bold;
+    background: linear-gradient(135deg, g.$mainColor 0%, #b0d96e 100%);
+    border-radius: 5rem;
+    &:hover {
+      transform: translateY(-2px);
+    }
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="search"],
+input[type="url"],
+input[type="tel"],
+input[type="radio"] {
+  border: none;
+}

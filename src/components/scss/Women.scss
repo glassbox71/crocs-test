@@ -1,0 +1,13 @@
+// Women 페이지 전체 레이아웃 스타일
+@use '../../App.scss' as g;
+
+main {
+    margin-top: 10rem;
+}
+
+.section__wrap {
+    max-width: 184rem;
+    margin: 0 auto;
+    display: flex;
+    gap: 9.6rem;
+}

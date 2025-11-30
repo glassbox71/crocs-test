@@ -1,0 +1,214 @@
+@use "../../App.scss" as g;
+
+.crocsclub_wrap {
+  padding-top: 3rem;
+  width: 400px;
+  margin: 0 auto;
+  text-align: center;
+
+  .title_wrap {
+    margin-bottom: 2.4rem;
+  }
+
+  .section_sub_title {
+    font-weight: 700;
+  }
+
+  .benefit_list {
+    @include g.flex($gap: 2rem, $jc: center);
+    padding-bottom: 2.4rem;
+    li {
+      @include g.flex($fd: column, $gap: 0.5rem);
+      font-size: 1.2rem;
+      font-weight: 500;
+      span {
+        display: block;
+        width: fit-content;
+        height: fit-content;
+        padding: 1rem;
+        border-radius: 50px;
+        background: g.$mainColor;
+        img {
+          width: 3rem;
+        }
+      }
+    }
+  }
+
+  button {
+    width: 40rem;
+    height: 4rem;
+    border-radius: 50px;
+    border: none;
+    font-weight: bold;
+    font-size: 1.6rem;
+    background: linear-gradient(135deg, g.$mainColor 0%, #b0d96e 100%);
+    &:hover {
+      transform: translateY(-2px);
+      // box-shadow: 0 6px 20px rgba(102, 222, 27, 0.4);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  a {
+    display: block;
+    width: 40rem;
+    height: 4rem;
+    border-radius: 50px;
+    border: none;
+    font-weight: bold;
+    font-size: 1.6rem;
+    background: g.$mainColor;
+    line-height: 4rem;
+  }
+}
+
+/* 로그인 팝업 오버레이 */
+.login_popup_overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* 팝업 박스 */
+.login_popup {
+  background: white;
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 90%;
+  position: relative;
+  text-align: center;
+  animation: slideUp 0.3s ease-out;
+
+  /* 닫기 버튼 */
+  .popup_close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s;
+    &:hover {
+      color: #000;
+    }
+  }
+
+  /* 팝업 제목 */
+  h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #333;
+    font-weight: 700;
+  }
+
+  /* 팝업 내용 */
+  p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 30px;
+    line-height: 1.6;
+  }
+
+  /* 버튼 그룹 */
+  .popup_buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+  }
+
+  /* 로그인 버튼 */
+  .login_btn {
+    flex: 1;
+    background-color: #000;
+    color: white;
+    border: none;
+    border-radius: 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    &:hover {
+      background: linear-gradient(135deg, g.$mainColor 0%, #b0d96e 100%);
+    }
+  }
+
+  /* 취소 버튼 */
+  .cancel_btn {
+    flex: 1;
+    padding: 14px 24px;
+    background-color: #f0f0f0;
+    color: #333;
+    border: none;
+    border-radius: 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: #e0e0e0;
+    }
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .login_popup {
+    padding: 30px 20px;
+    max-width: 90%;
+  }
+
+  .login_popup h3 {
+    font-size: 20px;
+  }
+
+  .login_popup p {
+    font-size: 14px;
+  }
+
+  .login_popup .popup_buttons {
+    flex-direction: column;
+  }
+}

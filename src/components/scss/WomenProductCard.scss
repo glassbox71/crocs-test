@@ -1,0 +1,51 @@
+// WomenProductCard 컴포넌트 스타일
+@use '../../App.scss' as g;
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 10px;
+    padding: 2rem 2rem;
+    // transition: all 0.3s ease;
+
+    .product-card__color,
+    .product-card__size {
+        justify-content: flex-start;
+        width: 100%;
+
+        /* 항상 보이도록 변경 */
+        max-height: none;
+        opacity: 1;
+        overflow: visible;
+        margin-top: 1rem; /* 필요하면 추가 */
+        transition: none;
+    }
+
+    &:hover {
+        outline: 1px solid #cccccc;
+        box-shadow: 0 0 12px 2.5px rgba(0, 0, 0, 0.08);
+        // transform: translateY(-0.4rem);
+
+        // .product-card__color,
+        // .product-card__size {
+        //     max-height: 200px;
+        //     opacity: 1;
+        //     margin-top: 0;
+        // }
+    }
+
+    &__img_info_wrap {
+        display: block;
+        width: 32.8rem;
+        height: fit-content;
+        background-color: #fff;
+        border-radius: 0.8rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.6rem;
+    }
+}

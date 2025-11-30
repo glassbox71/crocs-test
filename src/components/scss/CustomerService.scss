@@ -1,0 +1,397 @@
+@use '../../App.scss' as g;
+
+.cs-modal-bg {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 9998;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.cs-container {
+    width: 1200px;
+    height: 100vh;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    background: #fff;
+    // background: g.$mainColorTransparent;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 9999;
+
+    .main-title {
+        margin-top: 0;
+
+        .title_wrap {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+    }
+    .cs-content {
+        display: grid;
+        grid-template-columns: 400px 1fr;
+        gap: 4rem;
+    }
+
+    // 왼쪽 안내 영역
+    .cs-left {
+        width: 100%;
+    }
+
+    .cs-info-box {
+        background-color: #f8f9fa;
+        padding: 3rem;
+        border-radius: 1.2rem;
+        position: sticky;
+        top: 2rem;
+    }
+
+    .info-title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #000;
+        margin-bottom: 1.5rem;
+    }
+
+    .info-description {
+        font-size: 1.3rem;
+        color: #666;
+        line-height: 1.8;
+        margin-bottom: 3rem;
+        padding-bottom: 3rem;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .info-section {
+        margin-bottom: 3rem;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    .section-subtitle {
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: #000;
+        margin-bottom: 1rem;
+    }
+
+    .section-text {
+        // font-size: 1.rem;
+        color: #666;
+        line-height: 1.8;
+    }
+
+    .faq-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+            font-size: 1.4rem;
+            color: #666;
+            padding: 0.8rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+
+            &::before {
+                content: '•';
+                position: absolute;
+                left: 0;
+                color: g.$mainColor;
+                font-weight: bold;
+            }
+        }
+    }
+
+    // 오른쪽 폼 영역
+    .cs-right {
+        width: 100%;
+    }
+
+    .cs-form {
+        background-color: white;
+        padding: 0 3rem;
+        border-radius: 1.2rem;
+        // box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .form-group {
+        margin-bottom: 1rem;
+    }
+
+    .form-label {
+        // display: block;
+        font-size: 1.4rem;
+        @include g.flex();
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 0.8rem;
+
+        &.required::after {
+            content: ' *';
+            color: g.$mainColor;
+        }
+    }
+
+    .form-input {
+        width: 100%;
+        height: 4rem;
+        padding: 0 1.5rem;
+        font-size: 1.2rem;
+        border: 1px solid #eee;
+        border-radius: 0.8rem;
+        transition: all 0.2s;
+
+        &:focus {
+            outline: none;
+            border-color: g.$mainColor;
+            box-shadow: 0 0 0 3px rgba(102, 222, 27, 0.1);
+        }
+
+        &::placeholder {
+            color: #aaa;
+        }
+    }
+
+    .form-textarea {
+        width: 100%;
+        height: 16rem;
+        padding: 1.5rem;
+        font-size: 1.4rem;
+        border: 1px solid #ddd;
+        border-radius: 0.8rem;
+        resize: vertical;
+        font-family: inherit;
+        line-height: 1.6;
+        transition: all 0.2s;
+
+        &:focus {
+            outline: none;
+            border-color: g.$mainColor;
+            box-shadow: 0 0 0 3px rgba(102, 222, 27, 0.1);
+        }
+
+        &::placeholder {
+            color: #aaa;
+        }
+    }
+
+    .form-notice {
+        font-size: 1.3rem;
+        color: #999;
+        margin-bottom: 2rem;
+
+        .required-mark {
+            color: g.$mainColor;
+            font-weight: bold;
+        }
+    }
+
+    // 개인정보 동의
+    .privacy-agreement {
+        background-color: #f8f9fa;
+        padding: 2rem;
+        border-radius: 0.8rem;
+        margin-bottom: 2rem;
+    }
+
+    .privacy-label {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        cursor: pointer;
+        margin-bottom: 1.5rem;
+
+        input[type='checkbox'] {
+            margin-top: 0.3rem;
+            cursor: pointer;
+            width: 1.8rem;
+            height: 1.8rem;
+        }
+    }
+
+    .privacy-text {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: #333;
+    }
+
+    .privacy-details {
+        padding-left: 2.8rem;
+    }
+
+    .privacy-item {
+        font-size: 1.3rem;
+        color: #666;
+        line-height: 1.8;
+        margin-bottom: 0.5rem;
+
+        strong {
+            color: #333;
+            font-weight: 600;
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    // 버튼 그룹
+    .button-group {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+
+        button {
+            width: 100%;
+            font-weight: 600;
+            height: 4rem;
+            transition: all 0.3s;
+        }
+    }
+
+    .btn-submit {
+        color: white;
+        background: linear-gradient(135deg, g.$mainColor 0%, #b0d96e 100%);
+        box-shadow: 0 4px 15px rgba(102, 222, 27, 0.3);
+
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 222, 27, 0.4);
+        }
+
+        &:active {
+            transform: translateY(0);
+        }
+    }
+
+    .btn-cancel {
+        color: #666;
+        background-color: white;
+        border: 1px solid #ddd;
+
+        &:hover {
+            background-color: #f8f9fa;
+            border-color: #999;
+            color: #333;
+            transform: translateY(-2px);
+        }
+
+        &:active {
+            transform: translateY(0);
+        }
+    }
+
+    // 제출 완료 메시지
+    .submit-success {
+        background-color: white;
+        padding: 6rem 3rem;
+        border-radius: 1.2rem;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        text-align: center;
+    }
+
+    .success-icon {
+        width: 8rem;
+        height: 8rem;
+        margin: 0 auto 2rem;
+        background-color: g.$mainColor;
+        color: white;
+        font-size: 5rem;
+        font-weight: bold;
+        border-radius: 50%;
+        @include g.flex($jc: center, $ai: center);
+        animation: scaleIn 0.5s ease;
+    }
+
+    @keyframes scaleIn {
+        0% {
+            transform: scale(0);
+        }
+        50% {
+            transform: scale(1.1);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    .success-title {
+        font-size: 2.4rem;
+        font-weight: 700;
+        color: #000;
+        margin-bottom: 1.5rem;
+    }
+
+    .success-message {
+        font-size: 1.6rem;
+        color: #666;
+        line-height: 1.8;
+    }
+
+    .redirect-notice {
+        font-size: 1.4rem;
+        color: #999;
+        font-style: italic;
+    }
+
+    // 반응형
+    @media (max-width: 1024px) {
+        .cs-content {
+            grid-template-columns: 1fr;
+        }
+
+        .cs-info-box {
+            position: static;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .cs-container {
+            padding: 2rem 1.5rem;
+        }
+
+        .main-title {
+            margin-bottom: 3rem;
+        }
+
+        .cs-content {
+            gap: 2rem;
+        }
+
+        .cs-info-box,
+        .cs-form {
+            padding: 2rem;
+        }
+
+        .info-title {
+            font-size: 2rem;
+        }
+
+        .button-group {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .success-icon {
+            width: 6rem;
+            height: 6rem;
+            font-size: 4rem;
+        }
+
+        .success-title {
+            font-size: 2rem;
+        }
+
+        .success-message {
+            font-size: 1.4rem;
+        }
+    }
+}

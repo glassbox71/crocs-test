@@ -1,0 +1,126 @@
+@use '../../App.scss' as g;
+
+.product_list_page {
+    .title_wrap {
+        margin: 0 auto;
+        width: fit-content;
+    }
+    .search_info_wrap {
+        @include g.flex($jc: center, $gap: 10px);
+        width: fit-content;
+        background: lightgreen;
+        padding-left: 1rem;
+        margin-bottom: 4rem;
+        border-radius: 5px;
+        .search_info {
+            @include g.flex($jc: center, $gap: 10px);
+            font-weight: 600;
+        }
+    }
+    .sub_menu_wrap {
+        @include g.flex($jc: center);
+        margin: 5rem 0;
+        .sub_menu_btn {
+            border: 1px solid #ccc;
+            font-weight: 600;
+            font-size: 1.8rem;
+
+            &:hover {
+                background: g.$mainColor;
+            }
+        }
+    }
+    .product_list_wrap {
+        width: 100%;
+        @include g.flex($jc: center, $ai: flex-start);
+        margin: 0 auto;
+
+        .list_right {
+            // width: 100%;
+            .product-card__item_list {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 4rem 4rem;
+            }
+        }
+    }
+    .page_pager {
+        @include g.flex($jc: center);
+    }
+}
+
+// @use '../../App.scss' as g;
+
+// .product_list_wrap {
+//     @include g.flex($ai: unset, $jc: unset);
+//     .list_left {
+//         .left_nav_wrap {
+//             color: g.$subColor;
+//         }
+//         .left_nav {
+//             width: 32.4rem;
+//             height: fit-content;
+//             display: flex;
+//             flex-direction: column;
+//             gap: 2.8rem;
+//             padding: 2.8rem 1.6rem;
+//             border-radius: 1rem;
+//             background-color: #fafafd;
+//             .filter-menu__wrap {
+//                 gap: 2rem;
+//             }
+//             .filter_list_menu {
+//                 width: 100%;
+//                 .filter_menu_btn {
+//                     display: flex;
+//                     align-items: center;
+//                     gap: 0.6rem;
+//                     cursor: pointer;
+//                     .close-btn {
+//                         width: 1.2rem;
+//                         height: 1.2rem;
+//                     }
+//                 }
+//             }
+//         }
+//     }
+//     .list_right {
+//         .product_list_card_wrap {
+//             max-width: 1116px;
+//             .product_list_card_list {
+//                 display: grid;
+//                 grid-template-columns: repeat(4, 1fr);
+//                 .product_list_card {
+//                     display: flex;
+//                     flex-direction: column;
+//                     align-items: center;
+//                     width: 100%;
+//                     box-sizing: border-box;
+//                     border-radius: 10px;
+//                     padding: 2rem 2rem;
+//                     transition: all 0.3s ease;
+//                     &:hover {
+//                         outline: 1px solid #cccccc;
+//                         box-shadow: 0 0 12px 2.5px rgba(0, 0, 0, 0.08);
+//                         transform: translateY(-0.4rem);
+//                     }
+//                     .product_list_card_imgbox {
+//                         width: 100%;
+//                         aspect-ratio: 4/5;
+//                         display: flex;
+//                         justify-content: center;
+//                         align-items: center;
+//                         overflow: hidden;
+//                         text-align: center;
+//                         > img {
+//                             width: 50%;
+//                             object-fit: contain;
+//                         }
+//                     }
+//                 }
+//             }
+//             // .pager {
+//             // }
+//         }
+//     }
+// }

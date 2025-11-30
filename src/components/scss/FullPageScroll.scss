@@ -1,0 +1,23 @@
+body {
+    margin: 0;
+    // overflow: hidden; /* 기본 스크롤 제거 */
+}
+
+.fullpage-container {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden; /* ← 필수 */
+}
+
+/* 각 section은 100vh여야 한 화면을 꽉 채움 */
+.fullpage-section,
+.fullpage-container > section {
+    height: 100vh; /* ← 100vw 절대 아님! */
+    width: 100vw;
+    transition: background 0.5s ease, color 0.5s ease;
+}
+
+section[data-section-id='footer'] {
+    height: auto !important;
+    min-height: auto !important;
+}

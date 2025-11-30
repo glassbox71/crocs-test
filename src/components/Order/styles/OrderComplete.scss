@@ -1,0 +1,44 @@
+// 주문 완료 페이지 버튼 스타일 추가
+.order-complete-wrapper {
+  .order-complete-message {
+    .action-buttons {
+      margin-top: 3rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+
+      .btn-goto-mypage,
+      .btn-goto-home {
+        padding: 1.5rem 4rem;
+        font-size: 1.6rem;
+        font-weight: bold;
+        border: none;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .btn-goto-mypage {
+        background-color: #000;
+        color: #fff;
+
+        &:hover {
+          background-color: #333;
+          transform: translateY(-2px);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+      }
+
+      .btn-goto-home {
+        background-color: #000;
+        color: #fff;
+
+        &:hover {
+          background-color: #333;
+          transform: translateY(-2px);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+      }
+    }
+  }
+}
