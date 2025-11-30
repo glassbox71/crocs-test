@@ -14,8 +14,8 @@ const Header = ({ onCartClick, onRecentClick }) => {
   const onCloseSearch = useCrocsProductStore((state) => state.onCloseSearch);
   const [depthOpen, setDepthOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false); // <- 스크롤 상태
-  const [isCartOpen, setIsCartOpen] = useState(false);
-  const [isRecentOpen, setIsRecentOpen] = useState(false);
+  // const [isCartOpen, setIsCartOpen] = useState(false);
+  // const [isRecentOpen, setIsRecentOpen] = useState(false);
   const location = useLocation();
   const isSubPage = location.pathname !== "/"; // 예: 메인 페이지가 '/'일 경우
 

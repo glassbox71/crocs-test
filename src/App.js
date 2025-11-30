@@ -28,8 +28,11 @@ import Footer from "./components/Footer";
 import CustomerService from "./components/CustomerService";
 
 function App() {
-  const { user, loading, checkSession, initAuthListener } = loginAuthStore();
+  // const { user, loading, checkSession, initAuthListener } = loginAuthStore();
+   const { loading, checkSession, initAuthListener } = loginAuthStore();
   const [isCartOpen, setIsCartOpen] = useState(false);
+ 
+
   const [isRecentOpen, setIsRecentOpen] = useState(false);
   const location = useLocation();
   const [isCSOpen, setIsCSOpen] = useState(false);

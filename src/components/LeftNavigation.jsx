@@ -3,7 +3,7 @@ import Breadcrumbs from './Breadcrumbs';
 import SizeMenu from './SizeMenu';
 import FilterMenu from './FilterMenu';
 import ColorMenu from './ColorMenu';
-import PriceMenu from './PriceMenu';
+// import PriceMenu from './PriceMenu';
 import './scss/leftNavigation.scss';
 import { useCrocsSizeStore } from '../store/useCrocsSizeStore';
 import { useParams } from 'react-router-dom';

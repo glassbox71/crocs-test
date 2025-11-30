@@ -77,7 +77,7 @@ const JoinForm = () => {
 
     // 각각의 input 요소의 값이 변경될 때
     const handleChange = (e) => {
-        const { name, value, file } = e.target;
+        const { name, value} = e.target;
         // console.log(name, value);
         setFormData({ ...formData, [name]: value });
     };

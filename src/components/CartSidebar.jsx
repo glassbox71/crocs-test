@@ -31,16 +31,20 @@ function CartSidebar({ isOpen, onClose }) {
   } = useCartStore();
 
   // 장바구니 초기화
-  useEffect(() => {
+  // useEffect(() => {
+  //   initializeCart(Products);
+  // }, []);
+   useEffect(() => {
     initializeCart(Products);
-  }, []);
+  }, [initializeCart]);
+
 
   // 가격 계산
   const subtotal = getSubtotal();
-  const selectedSubtotal = getSelectedSubtotal();
+  // const selectedSubtotal = getSelectedSubtotal();
   const shipping = getShipping();
   const total = getTotal();
-  const selectedTotal = getSelectedTotal();
+  // const selectedTotal = getSelectedTotal();
 
   // 금액 포맷팅
   const formatPrice = (price) => {
